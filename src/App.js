@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import Button from './Button.js';
+import styled from 'styled-components';
 
 function App() {
+  const [drinks, setDrinks] = useState([]);
+
+  console.log(drinks);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Button handleClick={getDrinks}>Show Drinks</Button>
+      {drinks &&
+        drinks.map(drink => (
+          <DrinkContainer key={drink.idDrink}>
+            <p>{drink.strDrink}</p>
+            <p>{drink.strIngredient1}</p>
+            <p>{drink.strIngredient2}</p>
+            <p>{drink.strIngredient3}</p>
+            <p>{drink.strIngredient4}</p>
+            <p>{drink.strIngredient5}</p>
+            <p>{drink.strIngredient6}</p>
+            <p>{drink.strIngredient7}</p>
+            <p>{drink.strIngredient8}</p>
+          </DrinkContainer>
+        ))}
     </div>
   );
+
+  async function getDrinks() {
+    try {
+      const response = await fetch('recipes.json');
+      const data = await response.json();
+      setDrinks(data.drinks);
+    } catch (error) {
+      console.error('ERROR:', error);
+    }
+  }
 }
 
 export default App;
+
+const DrinkContainer = styled.div`
+  border: 1px solid black;
+`;
