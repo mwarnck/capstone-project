@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import DrinkList from './pages/DrinkList.js';
+import DrinkListPage from './pages/DrinkListPage.js';
 
 function App() {
   const [drinks, setDrinks] = useState([]);
@@ -10,7 +10,7 @@ function App() {
 
   return (
     <div>
-      <DrinkList drinks={drinks} />
+      <DrinkListPage drinks={drinks} />
     </div>
   );
 
