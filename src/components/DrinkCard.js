@@ -8,13 +8,17 @@ export default function DrinkCard({ drink }) {
     <DrinkContainer>
       <DrinkName>{drink.strDrink}</DrinkName>
       <Wrapper>
-        <DrinkImage
-          src={drink.strDrinkThumb}
-          alt={drink.strDrink}
-          width={200}
-          height={200}
-        ></DrinkImage>
-        <DetailsButton onClick={toggleDetails}>Show Details...</DetailsButton>
+        <WrapperImageButton>
+          <DrinkImage
+            src={drink.strDrinkThumb}
+            alt={drink.strDrink}
+            width={200}
+            height={200}
+          ></DrinkImage>
+          <DetailsButton type="button" onClick={toggleDetails}>
+            Show/Hide Details...
+          </DetailsButton>
+        </WrapperImageButton>
         {detailsVisable && (
           <IngredientsList role="list">
             <li>
@@ -96,15 +100,23 @@ const Wrapper = styled.div`
   padding-right: 20px;
 `;
 
+const WrapperImageButton = styled.div`
+  display: grid;
+  gap: 10px;
+`;
+
 const DrinkImage = styled.img`
   border-radius: 5px;
-  margin-bottom: 20px;
 `;
 
 const DetailsButton = styled.button`
   width: 200px;
   height: 20px;
   margin-bottom: 20px;
+  background-color: #f28d35;
+  box-shadow: none;
+  border-radius: 5px;
+  color: #0f88f2;
 `;
 
 const IngredientsList = styled.ul`
