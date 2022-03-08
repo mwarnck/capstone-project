@@ -32,6 +32,7 @@ describe('DrinkCard', () => {
     const button = screen.getByRole('button', { name: /Show/i });
     expect(button).toBeInTheDocument();
 
+    // test, if the ingredients and the instructions are rendered after clicking on the button
     userEvent.click(button);
 
     const ingredients = screen.getByRole('list');
@@ -40,40 +41,10 @@ describe('DrinkCard', () => {
     const instructions = screen.getByText(/Muddle mint/i);
     expect(instructions).toBeInTheDocument();
 
+    // test, if the ingredients and the instructions are NOT rendered after clicking on the button again
     userEvent.click(button);
 
     expect(ingredients).not.toBeInTheDocument();
     expect(instructions).not.toBeInTheDocument();
-  });
-
-  it('clicking on the button calls the function toggleDetails', () => {
-    const handleClick = jest.fn();
-    render(
-      <DrinkCard
-        toggleDetails={handleClick}
-        detailsVisable={false}
-        drink={{
-          strDrink: 'Mojito',
-          strDrinkThumb:
-            'https://www.thecocktaildb.com/images/media/drink/2x8thr1504816928.jpg',
-          strIngredient1: 'lime',
-          strMeasure1: 'juice of 1',
-          strInstructions: `Muddle mint leaves with sugar 
-    and lime juice. Add a splash 
-    of soda water and fill the 
-    glass with cracked ice. Pour 
-    the rum and top with soda 
-    water. Garnish and serve with 
-    straw`,
-        }}
-      />
-    );
-
-    const button = screen.getByRole('button', { name: /show/i });
-    expect(button).toBeInTheDocument();
-
-    userEvent.click(button);
-
-    expect(handleClick).toHaveBeenCalled();
   });
 });

@@ -9,6 +9,7 @@ const Template = args => <DrinkCard {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
+  detailsVisable: false,
   drink: {
     idDrink: '17222',
     strDrink: 'A1',
