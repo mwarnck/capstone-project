@@ -1,8 +1,9 @@
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import DrinkCard from './DrinkCard';
 
 describe('DrinkCard', () => {
-  it('render div with name, picture, ingredients and instructions for a drink', () => {
+  it('render div with name, picture, button, ingredients and instructions for a drink', () => {
     render(
       <DrinkCard
         drink={{
@@ -28,10 +29,22 @@ describe('DrinkCard', () => {
     const image = screen.getByRole('img');
     expect(image).toBeInTheDocument();
 
+    const button = screen.getByRole('button', { name: /Show/i });
+    expect(button).toBeInTheDocument();
+
+    // test, if the ingredients and the instructions are rendered after clicking on the button
+    userEvent.click(button);
+
     const ingredients = screen.getByRole('list');
     expect(ingredients).toBeInTheDocument();
 
     const instructions = screen.getByText(/Muddle mint/i);
     expect(instructions).toBeInTheDocument();
+
+    // test, if the ingredients and the instructions are NOT rendered after clicking on the button again
+    userEvent.click(button);
+
+    expect(ingredients).not.toBeInTheDocument();
+    expect(instructions).not.toBeInTheDocument();
   });
 });
