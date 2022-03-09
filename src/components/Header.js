@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-export default function Header() {
-  return <Heading>Cocktail Night</Heading>;
+export default function Header({ children }) {
+  return <Heading>{children}</Heading>;
 }
 
 const Heading = styled.h1`

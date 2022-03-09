@@ -84,6 +84,7 @@ const DrinkContainer = styled.div`
   border: 1px solid black;
   border-radius: 5px;
   background-color: #d6fcf9;
+  margin-bottom: 0;
 `;
 
 const DrinkName = styled.h2`
