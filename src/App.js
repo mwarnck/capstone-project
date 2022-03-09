@@ -18,23 +18,10 @@ function App() {
       <Header>Cocktail Night</Header>
       <PageContainer>
         <Routes>
-          <Route
-            path="/"
-            element={
-              <DrinkListPage
-                drinks={fetchedDrinks}
-                toggleBookmark={toggleBookmark}
-              />
-            }
-          />
+          <Route path="/" element={<DrinkListPage drinks={fetchedDrinks} />} />
           <Route
             path="/favorites"
-            element={
-              <BookmarksPage
-                drinks={fetchedDrinks}
-                toggleBookmark={toggleBookmark}
-              />
-            }
+            element={<BookmarksPage drinks={fetchedDrinks} />}
           />
         </Routes>
       </PageContainer>
@@ -52,19 +39,19 @@ function App() {
     }
   }
 
-  function toggleBookmark(index) {
-    const drinkId = fetchedDrinks[index].idDrink;
-    setFetchedDrinks(
-      fetchedDrinks.map(drink => {
-        if (drink.idDrink === drinkId) {
-          return { ...drink, isBookmarked: !drink.isBookmarked };
-        } else {
-          return drink;
-        }
-      })
-    );
-    console.log(drinkId);
-  }
+  // function toggleBookmark(index) {
+  //   const drinkId = fetchedDrinks[index].idDrink;
+  //   setFetchedDrinks(
+  //     fetchedDrinks.map(drink => {
+  //       if (drink.idDrink === drinkId) {
+  //         return { ...drink, isBookmarked: !drink.isBookmarked };
+  //       } else {
+  //         return drink;
+  //       }
+  //     })
+  //   );
+  //   console.log(drinkId);
+  // }
 }
 
 export default App;

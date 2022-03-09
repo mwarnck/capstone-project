@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-export default function DrinkCard({ drink, toggleBookmark, index }) {
+export default function DrinkCard({ drink }) {
   const [detailsVisable, setDetailsVisable] = useState(false);
 
   return (
     <DrinkContainer>
       <DrinkName>{drink.strDrink}</DrinkName>
-      <BookmarkButton onClick={toggleBookmark}>
+      <BookmarkButton>
         {drink.isBookmarked ? (
           <svg
             xmlns="http://www.w3.org/2000/svg"
