@@ -1,20 +1,20 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-export default function DrinkCard({ drink }) {
+export default function DrinkCard({ drink, toggleBookmark, index }) {
   const [detailsVisable, setDetailsVisable] = useState(false);
 
   return (
     <DrinkContainer>
       <DrinkName>{drink.strDrink}</DrinkName>
-      <BookmarkButton>
+      <BookmarkButton onClick={toggleBookmark}>
         {drink.isBookmarked ? (
           <svg
             xmlns="http://www.w3.org/2000/svg"
             aria-hidden="true"
             role="img"
-            width="1em"
-            height="1em"
+            width="25"
+            height="25"
             preserveAspectRatio="xMidYMid meet"
             viewBox="0 0 64 64"
           >

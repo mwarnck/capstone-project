@@ -1,11 +1,18 @@
 import styled from 'styled-components';
 import DrinkCard from '../components/DrinkCard.js';
 
-export default function DrinkList({ drinks }) {
+export default function DrinkList({ drinks, toggleBookmark }) {
   return (
     <DrinklistContainer>
       {drinks &&
-        drinks.map(drink => <DrinkCard key={drink.idDrink} drink={drink} />)}
+        drinks.map((drink, index) => (
+          <DrinkCard
+            key={drink.idDrink}
+            drink={drink}
+            index={index}
+            toggleBookmark={toggleBookmark}
+          />
+        ))}
     </DrinklistContainer>
   );
 }

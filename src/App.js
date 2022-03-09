@@ -7,7 +7,7 @@ import BookmarksPage from './pages/BookmarksPage.js';
 import Navigation from './components/Navigation.js';
 
 function App() {
-  const [drinks, setDrinks] = useState([]);
+  const [fetchedDrinks, setFetchedDrinks] = useState([]);
 
   useEffect(() => {
     getDrinks();
@@ -18,10 +18,23 @@ function App() {
       <Header>Cocktail Night</Header>
       <PageContainer>
         <Routes>
-          <Route path="/" element={<DrinkListPage drinks={drinks} />} />
+          <Route
+            path="/"
+            element={
+              <DrinkListPage
+                drinks={fetchedDrinks}
+                toggleBookmark={toggleBookmark}
+              />
+            }
+          />
           <Route
             path="/favorites"
-            element={<BookmarksPage drinks={drinks} />}
+            element={
+              <BookmarksPage
+                drinks={fetchedDrinks}
+                toggleBookmark={toggleBookmark}
+              />
+            }
           />
         </Routes>
       </PageContainer>
@@ -33,10 +46,24 @@ function App() {
     try {
       const response = await fetch('recipes.json');
       const data = await response.json();
-      setDrinks(data.drinks);
+      setFetchedDrinks(data.drinks);
     } catch (error) {
       console.error('ERROR:', error);
     }
+  }
+
+  function toggleBookmark(index) {
+    const drinkId = fetchedDrinks[index].idDrink;
+    setFetchedDrinks(
+      fetchedDrinks.map(drink => {
+        if (drink.idDrink === drinkId) {
+          return { ...drink, isBookmarked: !drink.isBookmarked };
+        } else {
+          return drink;
+        }
+      })
+    );
+    console.log(drinkId);
   }
 }
 
