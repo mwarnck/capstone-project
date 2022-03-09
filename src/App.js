@@ -29,7 +29,12 @@ function App() {
           />
           <Route
             path="/favorites"
-            element={<BookmarksPage drinks={fetchedDrinks} />}
+            element={
+              <BookmarksPage
+                drinks={fetchedDrinks}
+                toggleBookmark={toggleBookmark}
+              />
+            }
           />
         </Routes>
       </PageContainer>
@@ -57,8 +62,6 @@ function App() {
         }
       })
     );
-    console.log(id);
-    console.log(fetchedDrinks);
   }
 }
 

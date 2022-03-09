@@ -1,7 +1,21 @@
 import styled from 'styled-components';
+import DrinkCard from '../components/DrinkCard.js';
 
-export default function DrinkList() {
-  return <DrinklistContainer></DrinklistContainer>;
+export default function BookmarksList({ drinks, toggleBookmark }) {
+  return (
+    <DrinklistContainer>
+      {drinks &&
+        drinks
+          .filter(drink => drink.isBookmarked === true)
+          .map(drink => (
+            <DrinkCard
+              key={drink.idDrink}
+              drink={drink}
+              toggleBookmark={toggleBookmark}
+            />
+          ))}
+    </DrinklistContainer>
+  );
 }
 
 const DrinklistContainer = styled.section`
