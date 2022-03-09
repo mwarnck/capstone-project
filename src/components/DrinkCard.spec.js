@@ -29,11 +29,14 @@ describe('DrinkCard', () => {
     const image = screen.getByRole('img');
     expect(image).toBeInTheDocument();
 
-    const button = screen.getByRole('button', { name: /Show/i });
-    expect(button).toBeInTheDocument();
+    //const bookmarkButton = screen.getByRole('button', { name: /bookmarked/i });
+    //expect(bookmarkButton).toBeInTheDocument();
+
+    const detailsButton = screen.getByRole('button', { name: /details/i });
+    expect(detailsButton).toBeInTheDocument();
 
     // test, if the ingredients and the instructions are rendered after clicking on the button
-    userEvent.click(button);
+    userEvent.click(detailsButton);
 
     const ingredients = screen.getByRole('list');
     expect(ingredients).toBeInTheDocument();
@@ -42,7 +45,7 @@ describe('DrinkCard', () => {
     expect(instructions).toBeInTheDocument();
 
     // test, if the ingredients and the instructions are NOT rendered after clicking on the button again
-    userEvent.click(button);
+    userEvent.click(detailsButton);
 
     expect(ingredients).not.toBeInTheDocument();
     expect(instructions).not.toBeInTheDocument();
