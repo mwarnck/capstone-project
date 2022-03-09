@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import DrinkCard from '../components/DrinkCard.js';
 
-export default function BookmarksList({ drinks, toggleBookmark }) {
+export default function BookmarksPage({ drinks, toggleBookmark }) {
   return (
     <DrinklistContainer>
       {drinks &&
@@ -14,6 +14,12 @@ export default function BookmarksList({ drinks, toggleBookmark }) {
               toggleBookmark={toggleBookmark}
             />
           ))}
+      {drinks.filter(drink => drink.isBookmarked === true).length < 1 && (
+        <EmptyState>
+          There is nothing on your favorites list at the moment. Start with
+          adding your Drinks by clicking on the sun icon.
+        </EmptyState>
+      )}
     </DrinklistContainer>
   );
 }
@@ -25,4 +31,10 @@ const DrinklistContainer = styled.section`
   padding-right: 10px;
   margin-bottom: 0;
   margin-top: 0;
+`;
+
+const EmptyState = styled.p`
+  padding: 20px 20px 20px;
+  max-width: 600px;
+  font-size: 0.9rem;
 `;

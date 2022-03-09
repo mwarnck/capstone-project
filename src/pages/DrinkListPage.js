@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import DrinkCard from '../components/DrinkCard.js';
 
-export default function DrinkList({ drinks, toggleBookmark }) {
+export default function DrinkListPage({ drinks, toggleBookmark }) {
   return (
     <DrinklistContainer>
       {drinks &&
