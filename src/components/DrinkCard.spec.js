@@ -29,8 +29,8 @@ describe('DrinkCard', () => {
     const image = screen.getByRole('img');
     expect(image).toBeInTheDocument();
 
-    //const bookmarkButton = screen.getByRole('button', { name: /bookmarked/i });
-    //expect(bookmarkButton).toBeInTheDocument();
+    const bookmarkButton = screen.getByRole('button', { name: /bookmark/i });
+    expect(bookmarkButton).toBeInTheDocument();
 
     const detailsButton = screen.getByRole('button', { name: /details/i });
     expect(detailsButton).toBeInTheDocument();

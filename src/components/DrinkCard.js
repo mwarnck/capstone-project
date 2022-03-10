@@ -7,7 +7,10 @@ export default function DrinkCard({ drink, toggleBookmark }) {
   return (
     <DrinkContainer>
       <DrinkName>{drink.strDrink}</DrinkName>
-      <BookmarkButton onClick={() => toggleBookmark(drink.idDrink)}>
+      <BookmarkButton
+        type="button"
+        onClick={() => toggleBookmark(drink.idDrink)}
+      >
         {drink.isBookmarked ? (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -46,6 +49,7 @@ export default function DrinkCard({ drink, toggleBookmark }) {
             <circle cx="32" cy="32" r="19" fill="currentColor" />
           </svg>
         )}
+        <span className="sr-only">Bookmark</span>
       </BookmarkButton>
       <Wrapper>
         <WrapperImageButton>
