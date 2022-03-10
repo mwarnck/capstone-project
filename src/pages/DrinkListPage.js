@@ -1,27 +1,26 @@
 import styled from 'styled-components';
 import DrinkCard from '../components/DrinkCard.js';
-import Header from '../components/Header.js';
 
-export default function DrinkList({ drinks }) {
+export default function DrinkListPage({ drinks, toggleBookmark }) {
   return (
-    <PageContainer>
-      <Header />
-      <DrinklistContainer>
-        {drinks &&
-          drinks.map(drink => <DrinkCard key={drink.idDrink} drink={drink} />)}
-      </DrinklistContainer>
-    </PageContainer>
+    <DrinklistContainer>
+      {drinks &&
+        drinks.map(drink => (
+          <DrinkCard
+            key={drink.idDrink}
+            drink={drink}
+            toggleBookmark={toggleBookmark}
+          />
+        ))}
+    </DrinklistContainer>
   );
 }
-
-const PageContainer = styled.main`
-  display: grid;
-  grid-template-rows: 48px 1fr;
-  height: 100vh;
-`;
 
 const DrinklistContainer = styled.section`
   display: grid;
   gap: 10px;
-  overflow-y: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 0;
+  margin-top: 0;
 `;
