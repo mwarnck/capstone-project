@@ -35,6 +35,9 @@ const DrinklistContainer = styled.section`
 
 const EmptyState = styled.p`
   padding: 20px 20px 20px;
+  text-align: center;
   max-width: 600px;
   font-size: 0.9rem;
+  margin-left: auto;
+  margin-right: auto;
 `;

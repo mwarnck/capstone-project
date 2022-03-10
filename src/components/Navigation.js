@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 export default function Navigation() {
   return (
     <NavBar>
-      <LinkButton to="/">All</LinkButton>
+      <LinkButton to="/">All Drinks</LinkButton>
       <LinkButton to="/favorites">Favorites</LinkButton>
     </NavBar>
   );
@@ -14,17 +14,24 @@ const NavBar = styled.nav`
   display: grid;
   grid-template-columns: 1fr 1fr;
   place-items: center;
-  padding: 5px;
+  padding: 0;
   margin-top: 0;
   margin-bottom: 0;
+  background-color: #0392b0;
 `;
 
 const LinkButton = styled(NavLink)`
-  text-align: center;
+  display: grid;
+  place-items: center;
   text-decoration: none;
-  color: black;
+  color: #000;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
 
   &.active {
-    color: #f28d35;
+    background-color: #f28d35;
+    color: #fff;
   }
 `;

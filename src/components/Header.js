@@ -6,10 +6,11 @@ export default function Header({ children }) {
 
 const Heading = styled.h1`
   background-color: #f28d35;
-  color: #0f88f2;
+  color: #fff;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  border-radius: 5px;
   align-self: center;
   text-align: center;
-  margin: 0;
+  padding-top: 4px;
+  margin: 0 0 5px 0;
+  height: 100%;
 `;
