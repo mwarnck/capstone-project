@@ -7,11 +7,14 @@ import BookmarksPage from './pages/BookmarksPage.js';
 import Navigation from './components/Navigation.js';
 
 function App() {
-  const [fetchedDrinks, setFetchedDrinks] = useState([]);
+  const [fetchedDrinks, setFetchedDrinks] = useState(loadFromLocal('drinks'));
 
   useEffect(() => {
-    getDrinks();
-  }, []);
+    saveToLocal('drinks', fetchedDrinks);
+    if (!fetchedDrinks) {
+      getDrinks();
+    }
+  }, [fetchedDrinks]);
 
   return (
     <AppGrid>
@@ -62,6 +65,18 @@ function App() {
         }
       })
     );
+  }
+
+  function saveToLocal(key, data) {
+    localStorage.setItem(key, JSON.stringify(data));
+  }
+
+  function loadFromLocal(key) {
+    try {
+      return JSON.parse(localStorage.getItem(key));
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
 
