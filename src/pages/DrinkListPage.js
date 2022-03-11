@@ -10,7 +10,7 @@ export default function DrinkListPage({
 }) {
   return (
     <DrinklistContainer>
-      <Searchbar handleChange={handleChange} />
+      <Searchbar handleChange={handleChange} searchValue={searchValue} />
       {drinks &&
         drinks
           .filter(drink =>

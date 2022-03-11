@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export default function Searchbar({ handleChange }) {
+export default function Searchbar({ handleChange, searchValue }) {
   return (
     <SearchbarContainer>
       <InputLabel htmlFor="searchInput">Search for your Drink:</InputLabel>
@@ -11,6 +11,7 @@ export default function Searchbar({ handleChange }) {
         onChange={handleChange}
         placeholder="e.g. Caipirinha..."
         maxLength={30}
+        value={searchValue}
       ></InputField>
     </SearchbarContainer>
   );
