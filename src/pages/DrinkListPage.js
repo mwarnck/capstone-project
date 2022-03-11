@@ -23,11 +23,12 @@ export default function DrinkListPage({
               toggleBookmark={toggleBookmark}
             />
           ))}
-      {drinks.filter(drink =>
-        drink.strDrink.trim().toLowerCase().includes(searchValue)
-      ).length < 1 && (
-        <EmptyState>There are no results for your search input...</EmptyState>
-      )}
+      {drinks &&
+        drinks.filter(drink =>
+          drink.strDrink.trim().toLowerCase().includes(searchValue)
+        ).length < 1 && (
+          <EmptyState>There are no results for your search input...</EmptyState>
+        )}
     </DrinklistContainer>
   );
 }
