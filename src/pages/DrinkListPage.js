@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 import DrinkCard from '../components/DrinkCard.js';
+import Searchbar from '../components/Searchbar.js';
 
 export default function DrinkListPage({ drinks, toggleBookmark }) {
   return (
     <DrinklistContainer>
+      <Searchbar />
       {drinks &&
         drinks.map(drink => (
           <DrinkCard
