@@ -8,7 +8,7 @@ export default function Searchbar({ handleChange }) {
         type="text"
         id="searchInput"
         name="searchInput"
-        onChange={{ handleChange }}
+        onChange={handleChange}
         placeholder="e.g. Caipirinha..."
         maxLength={30}
       ></InputField>

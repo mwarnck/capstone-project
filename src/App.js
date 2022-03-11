@@ -8,6 +8,7 @@ import Navigation from './components/Navigation.js';
 
 function App() {
   const [fetchedDrinks, setFetchedDrinks] = useState(loadFromLocal('drinks'));
+  const [searchValue, setSearchValue] = useState('');
 
   useEffect(() => {
     saveToLocal('drinks', fetchedDrinks);
@@ -26,6 +27,8 @@ function App() {
             element={
               <DrinkListPage
                 drinks={fetchedDrinks}
+                searchValue={searchValue}
+                handleChange={handleChange}
                 toggleBookmark={toggleBookmark}
               />
             }
@@ -65,6 +68,10 @@ function App() {
         }
       })
     );
+  }
+
+  function handleChange(event) {
+    setSearchValue(event.target.value.trim().toLowerCase());
   }
 
   function saveToLocal(key, data) {
