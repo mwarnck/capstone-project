@@ -9,6 +9,8 @@ import Navigation from './components/Navigation.js';
 function App() {
   const [fetchedDrinks, setFetchedDrinks] = useState(loadFromLocal('drinks'));
   const [searchValue, setSearchValue] = useState('');
+  const [currentFilter, setCurrentFilter] = useState('all');
+  const [currentFilterBookmarks, setCurrentFilterBookmarks] = useState('all');
 
   useEffect(() => {
     saveToLocal('drinks', fetchedDrinks);
@@ -28,7 +30,9 @@ function App() {
               <DrinkListPage
                 drinks={fetchedDrinks}
                 searchValue={searchValue}
-                handleChange={handleChange}
+                handleChangeSearch={handleChangeSearch}
+                handleChangeFilter={handleChangeFilter}
+                currentFilter={currentFilter}
                 toggleBookmark={toggleBookmark}
               />
             }
@@ -38,6 +42,8 @@ function App() {
             element={
               <BookmarksPage
                 drinks={fetchedDrinks}
+                handleChangeFilterBookmarks={handleChangeFilterBookmarks}
+                currentFilterBookmarks={currentFilterBookmarks}
                 toggleBookmark={toggleBookmark}
               />
             }
@@ -70,8 +76,16 @@ function App() {
     );
   }
 
-  function handleChange(event) {
-    setSearchValue(event.target.value.trim().toLowerCase());
+  function handleChangeSearch(event) {
+    setSearchValue(event.target.value.toLowerCase());
+  }
+
+  function handleChangeFilter(value) {
+    setCurrentFilter(value);
+  }
+
+  function handleChangeFilterBookmarks(value) {
+    setCurrentFilterBookmarks(value);
   }
 
   function saveToLocal(key, data) {
