@@ -80,12 +80,12 @@ function App() {
     setSearchValue(event.target.value.toLowerCase());
   }
 
-  function handleChangeFilter(event) {
-    setCurrentFilter(event.target.value);
+  function handleChangeFilter(value) {
+    setCurrentFilter(value);
   }
 
-  function handleChangeFilterBookmarks(event) {
-    setCurrentFilterBookmarks(event.target.value);
+  function handleChangeFilterBookmarks(value) {
+    setCurrentFilterBookmarks(value);
   }
 
   function saveToLocal(key, data) {

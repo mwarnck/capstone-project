@@ -13,7 +13,7 @@ export default function FilterDrinks({ handleChangeFilter, currentFilter }) {
           id="filterAll"
           name="filterDrinks"
           value="all"
-          onChange={handleChangeFilter}
+          onChange={({ target: { value } }) => handleChangeFilter(value)}
         ></FilterButton>
         <LabelAlcoholic htmlFor="filterAlcoholic" currentFilter={currentFilter}>
           Alcoholic
@@ -23,7 +23,7 @@ export default function FilterDrinks({ handleChangeFilter, currentFilter }) {
           id="filterAlcoholic"
           name="filterDrinks"
           value="alcoholic"
-          onChange={handleChangeFilter}
+          onChange={({ target: { value } }) => handleChangeFilter(value)}
         ></FilterButton>
         <LabelNonAlcoholic
           htmlFor="filterNonAlcoholic"
@@ -36,7 +36,7 @@ export default function FilterDrinks({ handleChangeFilter, currentFilter }) {
           id="filterNonAlcoholic"
           name="filterDrinks"
           value="non alcoholic"
-          onChange={handleChangeFilter}
+          onChange={({ target: { value } }) => handleChangeFilter(value)}
         ></FilterButton>
       </fieldset>
     </FilterContainer>

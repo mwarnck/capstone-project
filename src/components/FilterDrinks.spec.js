@@ -15,7 +15,7 @@ describe('FilterDrinks', () => {
     expect(radioButtonNonAlcoholic).toBeInTheDocument();
   });
 
-  it('when clicking on a radio button the onChange function is called', () => {
+  it('when clicking on a radio button the onChange function is called with the value', () => {
     const radioCallback = jest.fn();
     render(
       <FilterDrinks handleChangeFilter={radioCallback} currentFilter={'all'} />
@@ -26,9 +26,10 @@ describe('FilterDrinks', () => {
     const radioButtonNonAlcoholic = screen.getByLabelText('Non-Alcoholic');
 
     userEvent.click(radioButtonAll);
+    expect(radioCallback).toBeCalledWith('all');
     userEvent.click(radioButtonAlcoholic);
+    expect(radioCallback).toBeCalledWith('alcoholic');
     userEvent.click(radioButtonNonAlcoholic);
-
-    expect(radioCallback).toBeCalledTimes(3);
+    expect(radioCallback).toBeCalledWith('non alcoholic');
   });
 });
