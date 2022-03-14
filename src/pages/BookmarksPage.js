@@ -1,12 +1,27 @@
 import styled from 'styled-components';
 import DrinkCard from '../components/DrinkCard.js';
+import FilterDrinks from '../components/FilterDrinks.js';
 
-export default function BookmarksPage({ drinks, toggleBookmark }) {
+export default function BookmarksPage({
+  drinks,
+  toggleBookmark,
+  currentFilterBookmarks,
+  handleChangeFilterBookmarks,
+}) {
   return (
     <DrinklistContainer>
+      <FilterDrinks
+        handleChangeFilter={handleChangeFilterBookmarks}
+        currentFilter={currentFilterBookmarks}
+      />
       {drinks &&
         drinks
           .filter(drink => drink.isBookmarked === true)
+          .filter(
+            drink =>
+              drink.strAlcoholic.toLowerCase() === currentFilterBookmarks ||
+              currentFilterBookmarks === 'all'
+          )
           .map(drink => (
             <DrinkCard
               key={drink.idDrink}

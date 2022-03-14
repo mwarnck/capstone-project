@@ -10,6 +10,7 @@ function App() {
   const [fetchedDrinks, setFetchedDrinks] = useState(loadFromLocal('drinks'));
   const [searchValue, setSearchValue] = useState('');
   const [currentFilter, setCurrentFilter] = useState('all');
+  const [currentFilterBookmarks, setCurrentFilterBookmarks] = useState('all');
 
   useEffect(() => {
     saveToLocal('drinks', fetchedDrinks);
@@ -41,6 +42,8 @@ function App() {
             element={
               <BookmarksPage
                 drinks={fetchedDrinks}
+                handleChangeFilterBookmarks={handleChangeFilterBookmarks}
+                currentFilterBookmarks={currentFilterBookmarks}
                 toggleBookmark={toggleBookmark}
               />
             }
@@ -79,6 +82,10 @@ function App() {
 
   function handleChangeFilter(event) {
     setCurrentFilter(event.target.value);
+  }
+
+  function handleChangeFilterBookmarks(event) {
+    setCurrentFilterBookmarks(event.target.value);
   }
 
   function saveToLocal(key, data) {
