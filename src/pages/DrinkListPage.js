@@ -24,7 +24,7 @@ export default function DrinkListPage({
       {drinks &&
         drinks
           .filter(drink =>
-            drink.strDrink.trim().toLowerCase().includes(searchValue)
+            drink.strDrink.trim().toLowerCase().includes(searchValue.trim())
           )
           .filter(
             drink =>

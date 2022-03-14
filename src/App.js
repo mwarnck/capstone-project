@@ -74,7 +74,7 @@ function App() {
   }
 
   function handleChangeSearch(event) {
-    setSearchValue(event.target.value.trim().toLowerCase());
+    setSearchValue(event.target.value.toLowerCase());
   }
 
   function handleChangeFilter(event) {
