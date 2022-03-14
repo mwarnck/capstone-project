@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import FilterDrinks from './FilterDrinks';
 
 describe('FilterDrinks', () => {
-  it('render three radio buttons with three labels', () => {
+  it('renders three radio buttons with three labels', () => {
     render(<FilterDrinks currentFilter={'all'} />);
 
     const radioButtonAll = screen.getByLabelText('All');
@@ -21,10 +21,14 @@ describe('FilterDrinks', () => {
       <FilterDrinks handleChangeFilter={radioCallback} currentFilter={'all'} />
     );
 
+    const radioButtonAll = screen.getByLabelText('All');
     const radioButtonAlcoholic = screen.getByLabelText('Alcoholic');
+    const radioButtonNonAlcoholic = screen.getByLabelText('Non-Alcoholic');
 
+    userEvent.click(radioButtonAll);
     userEvent.click(radioButtonAlcoholic);
+    userEvent.click(radioButtonNonAlcoholic);
 
-    expect(radioCallback).toBeCalled();
+    expect(radioCallback).toBeCalledTimes(3);
   });
 });

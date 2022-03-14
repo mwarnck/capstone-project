@@ -75,19 +75,15 @@ const LabelAll = styled.label`
   padding: 6px 15px;
 `;
 
-const LabelAlcoholic = styled.label`
+const LabelAlcoholic = styled(LabelAll)`
   background-color: ${props =>
     props.currentFilter === 'alcoholic' ? '#f28d35' : '#0392b0'};
   color: ${props => (props.currentFilter === 'alcoholic' ? '#fff' : '#000')};
-  border-radius: 5px;
-  padding: 6px 15px;
 `;
 
-const LabelNonAlcoholic = styled.label`
+const LabelNonAlcoholic = styled(LabelAll)`
   background-color: ${props =>
     props.currentFilter === 'non alcoholic' ? '#f28d35' : '#0392b0'};
   color: ${props =>
     props.currentFilter === 'non alcoholic' ? '#fff' : '#000'};
-  border-radius: 5px;
-  padding: 6px 15px;
 `;
