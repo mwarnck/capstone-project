@@ -1,20 +1,35 @@
 import styled from 'styled-components';
 import DrinkCard from '../components/DrinkCard.js';
 import Searchbar from '../components/Searchbar.js';
+import FilterDrinks from '../components/FilterDrinks.js';
 
 export default function DrinkListPage({
   drinks,
   toggleBookmark,
   searchValue,
-  handleChange,
+  handleChangeSearch,
+  handleChangeFilter,
+  currentFilter,
 }) {
   return (
     <DrinklistContainer>
-      <Searchbar handleChange={handleChange} searchValue={searchValue} />
+      <Searchbar
+        handleChangeSearch={handleChangeSearch}
+        searchValue={searchValue}
+      />
+      <FilterDrinks
+        handleChangeFilter={handleChangeFilter}
+        currentFilter={currentFilter}
+      />
       {drinks &&
         drinks
           .filter(drink =>
             drink.strDrink.trim().toLowerCase().includes(searchValue)
+          )
+          .filter(
+            drink =>
+              drink.strAlcoholic.toLowerCase() === currentFilter ||
+              currentFilter === 'all'
           )
           .map(drink => (
             <DrinkCard
