@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Header from './components/Header.js';
 import DrinkListPage from './pages/DrinkListPage.js';
 import BookmarksPage from './pages/BookmarksPage.js';
-import LoadingPage from './pages/LoadingPage.js';
+import LoadingScreen from './components/LoadingScreen.js';
 import Navigation from './components/Navigation.js';
 
 function App() {
@@ -28,7 +28,7 @@ function App() {
   }, [fetchedDrinks]);
 
   if (isLoading) {
-    return <LoadingPage />;
+    return <LoadingScreen />;
   } else {
     return (
       <AppGrid>

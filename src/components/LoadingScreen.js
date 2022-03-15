@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import loadingImage from '../images/loadingPageImage.jpg';
 
-export default function LoadingPage() {
+export default function LoadingScreen() {
   return (
-    <LoadingScreen>
+    <LoadingScreenContainer>
       <IntroTitel>Cocktail Night</IntroTitel>
       <IntroImage
         src={loadingImage}
@@ -11,11 +11,11 @@ export default function LoadingPage() {
         width="400"
         height="900"
       ></IntroImage>
-    </LoadingScreen>
+    </LoadingScreenContainer>
   );
 }
 
-const LoadingScreen = styled.div`
+const LoadingScreenContainer = styled.div`
   position: relative;
   width: 100%;
   height: 100vh;
