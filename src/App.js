@@ -4,13 +4,21 @@ import styled from 'styled-components';
 import Header from './components/Header.js';
 import DrinkListPage from './pages/DrinkListPage.js';
 import BookmarksPage from './pages/BookmarksPage.js';
+import LoadingScreen from './components/LoadingScreen.js';
 import Navigation from './components/Navigation.js';
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
   const [fetchedDrinks, setFetchedDrinks] = useState(loadFromLocal('drinks'));
   const [searchValue, setSearchValue] = useState('');
   const [currentFilter, setCurrentFilter] = useState('all');
   const [currentFilterBookmarks, setCurrentFilterBookmarks] = useState('all');
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2500);
+  }, []);
 
   useEffect(() => {
     saveToLocal('drinks', fetchedDrinks);
@@ -19,40 +27,44 @@ function App() {
     }
   }, [fetchedDrinks]);
 
-  return (
-    <AppGrid>
-      <Header>Cocktail Night</Header>
-      <PageContainer>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <DrinkListPage
-                drinks={fetchedDrinks}
-                searchValue={searchValue}
-                handleChangeSearch={handleChangeSearch}
-                handleChangeFilter={handleChangeFilter}
-                currentFilter={currentFilter}
-                toggleBookmark={toggleBookmark}
-              />
-            }
-          />
-          <Route
-            path="/favorites"
-            element={
-              <BookmarksPage
-                drinks={fetchedDrinks}
-                handleChangeFilterBookmarks={handleChangeFilterBookmarks}
-                currentFilterBookmarks={currentFilterBookmarks}
-                toggleBookmark={toggleBookmark}
-              />
-            }
-          />
-        </Routes>
-      </PageContainer>
-      <Navigation />
-    </AppGrid>
-  );
+  if (isLoading) {
+    return <LoadingScreen />;
+  } else {
+    return (
+      <AppGrid>
+        <Header>Cocktail Night</Header>
+        <PageContainer>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <DrinkListPage
+                  drinks={fetchedDrinks}
+                  searchValue={searchValue}
+                  handleChangeSearch={handleChangeSearch}
+                  handleChangeFilter={handleChangeFilter}
+                  currentFilter={currentFilter}
+                  toggleBookmark={toggleBookmark}
+                />
+              }
+            />
+            <Route
+              path="/favorites"
+              element={
+                <BookmarksPage
+                  drinks={fetchedDrinks}
+                  handleChangeFilterBookmarks={handleChangeFilterBookmarks}
+                  currentFilterBookmarks={currentFilterBookmarks}
+                  toggleBookmark={toggleBookmark}
+                />
+              }
+            />
+          </Routes>
+        </PageContainer>
+        <Navigation />
+      </AppGrid>
+    );
+  }
 
   async function getDrinks() {
     try {
