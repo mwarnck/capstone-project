@@ -48,76 +48,70 @@ export default function DrinkPage({ drink, toggleBookmark }) {
         )}
         <span className="sr-only">Bookmark</span>
       </BookmarkButton>
-      <Wrapper>
-        <WrapperImageButton>
-          <DrinkImage
-            src={drink.strDrinkThumb}
-            alt={drink.strDrink}
-            width={200}
-            height={200}
-          ></DrinkImage>
-        </WrapperImageButton>
-
-        <IngredientsList role="list">
-          <li>
-            <strong>{drink.strIngredient1}</strong> {drink.strMeasure1}
-          </li>
-          <li>
-            <strong>{drink.strIngredient2}</strong> {drink.strMeasure2}
-          </li>
-          <li>
-            <strong>{drink.strIngredient3}</strong> {drink.strMeasure3}
-          </li>
-          <li>
-            <strong>{drink.strIngredient4}</strong> {drink.strMeasure4}
-          </li>
-          <li>
-            <strong>{drink.strIngredient5}</strong> {drink.strMeasure5}
-          </li>
-          <li>
-            <strong>{drink.strIngredient6}</strong> {drink.strMeasure6}
-          </li>
-          <li>
-            <strong>{drink.strIngredient7}</strong> {drink.strMeasure7}
-          </li>
-          <li>
-            <strong>{drink.strIngredient8}</strong> {drink.strMeasure8}
-          </li>
-          <li>
-            <strong>{drink.strIngredient9}</strong> {drink.strMeasure9}
-          </li>
-          <li>
-            <strong>{drink.strIngredient10}</strong> {drink.strMeasure10}
-          </li>
-          <li>
-            <strong>{drink.strIngredient11}</strong> {drink.strMeasure11}
-          </li>
-          <li>
-            <strong>{drink.strIngredient12}</strong> {drink.strMeasure12}
-          </li>
-          <li>
-            <strong>{drink.strIngredient13}</strong> {drink.strMeasure13}
-          </li>
-          <li>
-            <strong>{drink.strIngredient14}</strong> {drink.strMeasure14}
-          </li>
-          <li>
-            <strong>{drink.strIngredient15}</strong> {drink.strMeasure15}
-          </li>
-        </IngredientsList>
-
-        <DrinkInstruction>{drink.strInstructions}</DrinkInstruction>
-      </Wrapper>
+      <DrinkImage
+        src={drink.strDrinkThumb}
+        alt={drink.strDrink}
+        width={250}
+        height={250}
+      ></DrinkImage>
+      <IngredientsList role="list">
+        <li>
+          <strong>{drink.strIngredient1}</strong> {drink.strMeasure1}
+        </li>
+        <li>
+          <strong>{drink.strIngredient2}</strong> {drink.strMeasure2}
+        </li>
+        <li>
+          <strong>{drink.strIngredient3}</strong> {drink.strMeasure3}
+        </li>
+        <li>
+          <strong>{drink.strIngredient4}</strong> {drink.strMeasure4}
+        </li>
+        <li>
+          <strong>{drink.strIngredient5}</strong> {drink.strMeasure5}
+        </li>
+        <li>
+          <strong>{drink.strIngredient6}</strong> {drink.strMeasure6}
+        </li>
+        <li>
+          <strong>{drink.strIngredient7}</strong> {drink.strMeasure7}
+        </li>
+        <li>
+          <strong>{drink.strIngredient8}</strong> {drink.strMeasure8}
+        </li>
+        <li>
+          <strong>{drink.strIngredient9}</strong> {drink.strMeasure9}
+        </li>
+        <li>
+          <strong>{drink.strIngredient10}</strong> {drink.strMeasure10}
+        </li>
+        <li>
+          <strong>{drink.strIngredient11}</strong> {drink.strMeasure11}
+        </li>
+        <li>
+          <strong>{drink.strIngredient12}</strong> {drink.strMeasure12}
+        </li>
+        <li>
+          <strong>{drink.strIngredient13}</strong> {drink.strMeasure13}
+        </li>
+        <li>
+          <strong>{drink.strIngredient14}</strong> {drink.strMeasure14}
+        </li>
+        <li>
+          <strong>{drink.strIngredient15}</strong> {drink.strMeasure15}
+        </li>
+      </IngredientsList>
+      <DrinkInstruction>{drink.strInstructions}</DrinkInstruction>
     </DrinkContainer>
   );
 }
 
 const DrinkContainer = styled.div`
+  display: grid;
+  gap: 25px;
+  place-items: center;
   border: 1px solid black;
-  border-radius: 5px;
-  background-color: #f4f2e8;
-  margin-bottom: 0;
-  padding-top: 10px;
+  padding-top: 20px;
   position: relative;
 `;
 
@@ -126,27 +120,12 @@ const BookmarkButton = styled.button`
   right: 25px;
   top: 10px;
   border-style: none;
-  background-color: #f4f2e8;
+  background-color: #fff;
 `;
 
 const DrinkName = styled.h2`
-  padding-left: 20px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: #f28d35;
-  margin-bottom: 10px;
-`;
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  padding-left: 20px;
-  padding-right: 20px;
-`;
-
-const WrapperImageButton = styled.div`
-  display: grid;
-  gap: 10px;
 `;
 
 const DrinkImage = styled.img`
@@ -156,7 +135,6 @@ const DrinkImage = styled.img`
 const IngredientsList = styled.ul`
   list-style: none;
   font-size: 0.9rem;
-  padding: 0 20px 20px;
 `;
 
 const DrinkInstruction = styled.p`
