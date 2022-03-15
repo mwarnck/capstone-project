@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import loadingImage from '../images/loadingPageImage.jpg';
+import loadingImageSmall from '../images/loadingPageImageSmall.jpg';
 
 export default function LoadingScreen() {
   return (
     <LoadingScreenContainer>
       <IntroTitel>Cocktail Night</IntroTitel>
       <IntroImage
-        src={loadingImage}
+        src={loadingImageSmall}
         alt="Orange Cocktail with dark background"
         width="400"
         height="900"
