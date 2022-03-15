@@ -22,18 +22,15 @@ const LoadingScreenContainer = styled.div`
   background: #000;
 `;
 
-const IntroTitel = styled.p`
+const IntroTitel = styled.h1`
   position: absolute;
   z-index: 1;
-  margin-left: auto;
-  margin-right: auto;
   left: 0;
   right: 0;
   text-align: center;
   top: 60px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 3rem;
-  font-weight: bold;
   color: #f28d35;
 `;
 
@@ -43,7 +40,6 @@ const IntroImage = styled.img`
   margin-right: auto;
   left: 0;
   right: 0;
-  text-align: center;
   min-width: 400px;
   max-width: 800px;
   height: 100%;
