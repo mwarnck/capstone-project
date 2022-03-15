@@ -1,12 +1,9 @@
-import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export default function DrinkCard({ drink, toggleBookmark }) {
-  const [detailsVisable, setDetailsVisable] = useState(false);
-
   return (
-    <DrinkContainer>
-      <DrinkName>{drink.strDrink}</DrinkName>
+    <DrinkContainer to={`/${drink.idDrink}`}>
       <BookmarkButton
         type="button"
         onClick={() => toggleBookmark(drink.idDrink)}
@@ -52,79 +49,26 @@ export default function DrinkCard({ drink, toggleBookmark }) {
         <span className="sr-only">Bookmark</span>
       </BookmarkButton>
       <Wrapper>
-        <WrapperImageButton>
-          <DrinkImage
-            src={drink.strDrinkThumb}
-            alt={drink.strDrink}
-            width={200}
-            height={200}
-          ></DrinkImage>
-          <DetailsButton type="button" onClick={toggleDetails}>
-            {detailsVisable ? 'Hide Details...' : 'Show Details...'}
-          </DetailsButton>
-        </WrapperImageButton>
-        {detailsVisable && (
-          <IngredientsList role="list">
-            <li>
-              <strong>{drink.strIngredient1}</strong> {drink.strMeasure1}
-            </li>
-            <li>
-              <strong>{drink.strIngredient2}</strong> {drink.strMeasure2}
-            </li>
-            <li>
-              <strong>{drink.strIngredient3}</strong> {drink.strMeasure3}
-            </li>
-            <li>
-              <strong>{drink.strIngredient4}</strong> {drink.strMeasure4}
-            </li>
-            <li>
-              <strong>{drink.strIngredient5}</strong> {drink.strMeasure5}
-            </li>
-            <li>
-              <strong>{drink.strIngredient6}</strong> {drink.strMeasure6}
-            </li>
-            <li>
-              <strong>{drink.strIngredient7}</strong> {drink.strMeasure7}
-            </li>
-            <li>
-              <strong>{drink.strIngredient8}</strong> {drink.strMeasure8}
-            </li>
-            <li>
-              <strong>{drink.strIngredient9}</strong> {drink.strMeasure9}
-            </li>
-            <li>
-              <strong>{drink.strIngredient10}</strong> {drink.strMeasure10}
-            </li>
-            <li>
-              <strong>{drink.strIngredient11}</strong> {drink.strMeasure11}
-            </li>
-            <li>
-              <strong>{drink.strIngredient12}</strong> {drink.strMeasure12}
-            </li>
-            <li>
-              <strong>{drink.strIngredient13}</strong> {drink.strMeasure13}
-            </li>
-            <li>
-              <strong>{drink.strIngredient14}</strong> {drink.strMeasure14}
-            </li>
-            <li>
-              <strong>{drink.strIngredient15}</strong> {drink.strMeasure15}
-            </li>
-          </IngredientsList>
-        )}
-        {detailsVisable && (
-          <DrinkInstruction>{drink.strInstructions}</DrinkInstruction>
-        )}
+        <DrinkImage
+          src={drink.strDrinkThumb}
+          alt={drink.strDrink}
+          width={100}
+          height={100}
+        ></DrinkImage>
+        <WrapperNameShortFacts>
+          <DrinkName>{drink.strDrink}</DrinkName>
+          <ShortFacts>
+            <li>{drink.strAlcoholic}</li>
+            <li>{drink.strCategory}</li>
+            <li>{drink.strGlass}</li>
+          </ShortFacts>
+        </WrapperNameShortFacts>
       </Wrapper>
     </DrinkContainer>
   );
-
-  function toggleDetails() {
-    setDetailsVisable(!detailsVisable);
-  }
 }
 
-const DrinkContainer = styled.div`
+const DrinkContainer = styled.section`
   border: 1px solid black;
   border-radius: 5px;
   background-color: #f4f2e8;
@@ -135,54 +79,40 @@ const DrinkContainer = styled.div`
 
 const BookmarkButton = styled.button`
   position: absolute;
-  right: 25px;
-  top: 10px;
+  right: 5px;
+  top: 5px;
   border-style: none;
   background-color: #f4f2e8;
 `;
 
 const DrinkName = styled.h2`
-  padding-left: 20px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: #f28d35;
-  margin-bottom: 10px;
+  font-size: 1.2rem;
 `;
 
 const Wrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  padding-left: 20px;
-  padding-right: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+
+  padding-left: 10px;
+  padding-right: 15px;
+  margin-bottom: 10px;
 `;
 
-const WrapperImageButton = styled.div`
-  display: grid;
-  gap: 10px;
+const WrapperNameShortFacts = styled.div`
+  padding-right: 10px;
 `;
 
 const DrinkImage = styled.img`
   border-radius: 5px;
 `;
 
-const DetailsButton = styled.button`
-  width: 200px;
-  height: 25px;
-  margin-bottom: 20px;
-  background-color: #f28d35;
-  box-shadow: none;
-  border-radius: 5px;
-  color: #fff;
-`;
-
-const IngredientsList = styled.ul`
-  list-style: none;
+const ShortFacts = styled.ul`
+  list-style: disc inside;
   font-size: 0.9rem;
-  padding: 0 20px 20px;
-`;
 
-const DrinkInstruction = styled.p`
-  padding: 0 20px 20px;
-  max-width: 600px;
-  font-size: 0.9rem;
+  li {
+    margin-top: 5px;
+  }
 `;
