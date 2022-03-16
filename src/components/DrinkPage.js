@@ -189,9 +189,10 @@ const ShortFactsList = styled.ul`
 
   li {
     font-size: 0.9rem;
-    border: 1px solid black;
     border-radius: 20px;
-    padding: 3px;
+    padding: 5px 8px;
+    background-color: #f28d35;
+    color: #fff;
   }
 `;
 
