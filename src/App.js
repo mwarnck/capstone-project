@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Header from './components/Header.js';
 import DrinkListPage from './pages/DrinkListPage.js';
 import BookmarksPage from './pages/BookmarksPage.js';
+import DrinkPage from './components/DrinkPage.js';
 import LoadingScreen from './components/LoadingScreen.js';
 import Navigation from './components/Navigation.js';
 
@@ -59,6 +60,15 @@ function App() {
                 />
               }
             />
+            {fetchedDrinks.map(drink => (
+              <Route
+                key={drink.idDrink}
+                path={`${drink.idDrink}`}
+                element={
+                  <DrinkPage drink={drink} toggleBookmark={toggleBookmark} />
+                }
+              />
+            ))}
           </Routes>
         </PageContainer>
         <Navigation />
