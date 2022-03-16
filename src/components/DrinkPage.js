@@ -1,10 +1,17 @@
 import styled from 'styled-components';
+import { useNavigate } from 'react-router';
 import bookmarkActive from '../icons/sunBookmarkActive.svg';
 import bookmarkInactive from '../icons/sunBookmarkInactive.svg';
+import goBackArrow from '../icons/goBackArrow.svg';
 
 export default function DrinkPage({ drink, toggleBookmark }) {
+  const navigate = useNavigate();
+
   return (
     <DrinkContainer>
+      <GoBackArrow onClick={() => navigate(-1)}>
+        <img src={goBackArrow} width="40" height="40" alt="go back arrow" />
+      </GoBackArrow>
       <DrinkName>{drink.strDrink}</DrinkName>
       <BookmarkButton
         type="button"
@@ -149,10 +156,18 @@ const DrinkContainer = styled.div`
   position: relative;
 `;
 
+const GoBackArrow = styled.button`
+  position: absolute;
+  top: 20px;
+  left: 25px;
+  background-color: #fff;
+  border-style: none;
+`;
+
 const BookmarkButton = styled.button`
   position: absolute;
   right: 25px;
-  top: 10px;
+  top: 20px;
   border-style: none;
   background-color: #fff;
 `;
@@ -160,6 +175,8 @@ const BookmarkButton = styled.button`
 const DrinkName = styled.h2`
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: #f28d35;
+  max-width: 200px;
+  text-align: center;
 `;
 
 const ShortFactsList = styled.ul`
