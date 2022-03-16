@@ -11,10 +11,12 @@ export default function DrinkPage({ drink, toggleBookmark }) {
     <DrinkContainer>
       <GoBackArrow onClick={() => navigate(-1)}>
         <img src={goBackArrow} width="40" height="40" alt="go back arrow" />
+        <span className="sr-only">Go back arrow</span>
       </GoBackArrow>
       <DrinkName>{drink.strDrink}</DrinkName>
       <BookmarkButton
         type="button"
+        data-testid="bookmark"
         onClick={() => toggleBookmark(drink.idDrink)}
       >
         {drink.isBookmarked ? (
