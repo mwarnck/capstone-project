@@ -16,6 +16,9 @@ function App() {
   const [searchValue, setSearchValue] = useState('');
   const [currentFilter, setCurrentFilter] = useState('all');
   const [currentFilterBookmarks, setCurrentFilterBookmarks] = useState('all');
+  const [myDrinks, setMyDrinks] = useState([]);
+
+  console.log(myDrinks);
 
   useEffect(() => {
     setTimeout(() => {
@@ -62,8 +65,14 @@ function App() {
                 />
               }
             />
-            <Route path="/myDrinks" element={<MyDrinksPage />} />
-            <Route path="/createDrinkForm" element={<CreateDrinkForm />} />
+            <Route
+              path="/myDrinks"
+              element={<MyDrinksPage myDrinks={myDrinks} />}
+            />
+            <Route
+              path="/createDrinkForm"
+              element={<CreateDrinkForm addNewDrink={addNewDrink} />}
+            />
             {fetchedDrinks.map(drink => (
               <Route
                 key={drink.idDrink}
@@ -112,6 +121,10 @@ function App() {
 
   function handleChangeFilterBookmarks(value) {
     setCurrentFilterBookmarks(value);
+  }
+
+  function addNewDrink(newDrink) {
+    setMyDrinks([...myDrinks, newDrink]);
   }
 
   function saveToLocal(key, data) {
