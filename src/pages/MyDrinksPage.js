@@ -1,9 +1,18 @@
 import styled from 'styled-components';
 import DrinkCard from '../components/DrinkCard.js';
+import addNewDrinkIcon from '../icons/addNewDrinkIcon.svg';
+import { useNavigate } from 'react-router-dom';
 
 export default function MyDrinksPage({ myDrinks }) {
+  const navigate = useNavigate();
+
   return (
     <DrinklistContainer>
+      <MyDrinksHeadline>My own Drinks</MyDrinksHeadline>
+      <AddDrinkButton onClick={() => navigate('/createDrinkForm')}>
+        <img src={addNewDrinkIcon} width="50" height="50" alt="add new drink" />
+        <span className="sr-only">Add new drink icon</span>
+      </AddDrinkButton>
       {myDrinks &&
         myDrinks.map(drink => <DrinkCard key={drink.idDrink} drink={drink} />)}
       {myDrinks.length < 1 && (
@@ -23,6 +32,7 @@ const DrinklistContainer = styled.section`
   padding-right: 10px;
   margin-bottom: 0;
   margin-top: 0;
+  position: relative;
 `;
 
 const EmptyState = styled.p`
@@ -32,4 +42,20 @@ const EmptyState = styled.p`
   font-size: 0.9rem;
   margin-left: auto;
   margin-right: auto;
+`;
+
+const MyDrinksHeadline = styled.h2`
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 1.3rem;
+  color: #f28d35;
+  text-align: center;
+  margin: 20px auto;
+`;
+
+const AddDrinkButton = styled.button`
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background-color: #fff;
+  border-style: none;
 `;

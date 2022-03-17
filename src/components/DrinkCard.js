@@ -5,7 +5,7 @@ import bookmarkInactive from '../icons/sunBookmarkInactive.svg';
 
 export default function DrinkCard({ drink, toggleBookmark }) {
   return (
-    <DrinkContainer to={`/${drink.idDrink}`}>
+    <DrinkContainer>
       <BookmarkButton
         type="button"
         onClick={() => toggleBookmark(drink.idDrink)}
