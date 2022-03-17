@@ -6,13 +6,14 @@ export default function Navigation() {
     <NavBar>
       <LinkButton to="/">All Drinks</LinkButton>
       <LinkButton to="/favorites">Favorites</LinkButton>
+      <LinkButton to="/mydrinks">My Drinks</LinkButton>
     </NavBar>
   );
 }
 
 const NavBar = styled.nav`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   place-items: center;
   padding: 0;
   margin-top: 0;
