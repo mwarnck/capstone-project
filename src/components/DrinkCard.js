@@ -30,7 +30,10 @@ export default function DrinkCard({ drink, toggleBookmark }) {
       <LinkContainer to={`/${drink.idDrink}`}>
         <Wrapper>
           <DrinkImage
-            src={drink.strDrinkThumb}
+            src={
+              drink.strDrinkThumb ??
+              'https://source.unsplash.com/random/100×100/?cocktail'
+            }
             alt={drink.strDrink}
             width={100}
             height={100}
