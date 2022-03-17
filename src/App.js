@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import styled from 'styled-components';
+import useLocalStorage from './hooks/useLocalStorage.js';
 import Header from './components/Header.js';
 import DrinkListPage from './pages/DrinkListPage.js';
 import BookmarksPage from './pages/BookmarksPage.js';
@@ -16,7 +17,7 @@ function App() {
   const [searchValue, setSearchValue] = useState('');
   const [currentFilter, setCurrentFilter] = useState('all');
   const [currentFilterBookmarks, setCurrentFilterBookmarks] = useState('all');
-  const [myDrinks, setMyDrinks] = useState([]);
+  const [myDrinks, setMyDrinks] = useLocalStorage('myDrinks', []);
 
   console.log(myDrinks);
 
