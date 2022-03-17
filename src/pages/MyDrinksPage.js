@@ -3,7 +3,7 @@ import DrinkCard from '../components/DrinkCard.js';
 import addNewDrinkIcon from '../icons/addNewDrinkIcon.svg';
 import { useNavigate } from 'react-router-dom';
 
-export default function MyDrinksPage({ myDrinks }) {
+export default function MyDrinksPage({ drinks, toggleBookmark }) {
   const navigate = useNavigate();
 
   return (
@@ -13,9 +13,18 @@ export default function MyDrinksPage({ myDrinks }) {
         <img src={addNewDrinkIcon} width="50" height="50" alt="add new drink" />
         <span className="sr-only">Add new drink icon</span>
       </AddDrinkButton>
-      {myDrinks &&
-        myDrinks.map(drink => <DrinkCard key={drink.idDrink} drink={drink} />)}
-      {myDrinks.length < 1 && (
+      {drinks &&
+        drinks
+          .filter(drink => drink.isMyDrink === true)
+
+          .map(drink => (
+            <DrinkCard
+              key={drink.idDrink}
+              drink={drink}
+              toggleBookmark={toggleBookmark}
+            />
+          ))}
+      {drinks.filter(drink => drink.isMyDrink === true).length < 1 && (
         <EmptyState>
           There is nothing to show at the moment. Start with creating your own
           Drinks by clicking on the "+" icon.

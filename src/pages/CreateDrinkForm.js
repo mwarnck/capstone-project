@@ -23,6 +23,7 @@ export default function CreateDrinkForm({ addNewDrink }) {
   const onSubmit = data => {
     const newDrink = {
       idDrink: nanoid(),
+      isMyDrink: true,
       strDrink: data.drinkName,
       strCategory: data.category,
       strAlcoholic: data.alcoholic,
