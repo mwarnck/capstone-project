@@ -6,13 +6,19 @@ export default function CreateDrinkForm() {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors, isDirty },
   } = useForm({
-    drinkName: '',
+    defaultValues: {
+      drinkName: '',
+      alcoholic: 'alcoholic',
+      category: 'Cocktail',
+      glass: 'Cocktail glass',
+    },
   });
 
   const onSubmit = data => {
     console.log(data);
+    reset();
   };
 
   return (
@@ -39,12 +45,12 @@ export default function CreateDrinkForm() {
         <span>{errors.drinkName?.message}</span>
 
         <label htmlFor="alcoholic">Alcoholic or non-alcoholic?</label>
-        <select id="alcoholic">
+        <select id="alcoholic" {...register('alcoholic')}>
           <option value="alcoholic">Alcoholic</option>
           <option value="non alcoholic">Non-Alcoholic</option>
         </select>
         <label htmlFor="category">Category?</label>
-        <select id="category">
+        <select id="category" {...register('category')}>
           <option value="Cocktail">Cocktail</option>
           <option value="Ordinary Drink">Ordinary Drink</option>
           <option value="Shot">Shot</option>
@@ -54,14 +60,17 @@ export default function CreateDrinkForm() {
           <option value="Beer">Beer</option>
         </select>
         <label htmlFor="glass">Glass?</label>
-        <select id="glass">
-          <option value="HighBall glass">Highball Glass</option>
+        <select id="glass" {...register('glass')}>
           <option value="Cocktail glass">Cocktail Glass</option>
+          <option value="Highball glass">Highball Glass</option>
           <option value="Old-fashioned glass">Old-fashioned Glass</option>
           <option value="Shot glass">Shot Glass</option>
           <option value="Beer glass">Beer Glass</option>
           <option value="Coffee mug">Coffee Mug</option>
         </select>
+        <button disabled={!isDirty} type="submit">
+          Create Drink
+        </button>
       </StyledForm>
     </FormContainer>
   );
