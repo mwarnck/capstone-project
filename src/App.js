@@ -8,6 +8,7 @@ import MyDrinksPage from './pages/MyDrinksPage.js';
 import DrinkPage from './components/DrinkPage.js';
 import LoadingScreen from './components/LoadingScreen.js';
 import Navigation from './components/Navigation.js';
+import CreateDrinkForm from './pages/CreateDrinkForm.js';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -61,7 +62,8 @@ function App() {
                 />
               }
             />
-            <Route path="/mydrinks" element={<MyDrinksPage />} />
+            <Route path="/myDrinks" element={<MyDrinksPage />} />
+            <Route path="/createDrinkForm" element={<CreateDrinkForm />} />
             {fetchedDrinks.map(drink => (
               <Route
                 key={drink.idDrink}

@@ -6,7 +6,7 @@ export default function Navigation() {
     <NavBar>
       <LinkButton to="/">All Drinks</LinkButton>
       <LinkButton to="/favorites">Favorites</LinkButton>
-      <LinkButton to="/mydrinks">My Drinks</LinkButton>
+      <LinkButton to="/myDrinks">My Drinks</LinkButton>
     </NavBar>
   );
 }

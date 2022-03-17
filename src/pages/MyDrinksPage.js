@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import DrinkCard from '../components/DrinkCard.js';
 
-export default function BookmarksPage() {
+export default function MyDrinksPage() {
   const [myDrinks, setMyDrinks] = useState([]);
 
   return (
