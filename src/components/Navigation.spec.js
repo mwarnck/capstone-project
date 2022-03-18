@@ -10,6 +10,6 @@ describe('Navigation', () => {
       </MemoryRouter>
     );
     const links = screen.getAllByRole('link');
-    expect(links).toHaveLength(2);
+    expect(links).toHaveLength(3);
   });
 });

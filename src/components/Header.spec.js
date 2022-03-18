@@ -3,7 +3,7 @@ import Header from './Header';
 
 describe('Header', () => {
   it('renders one h1 element', () => {
-    render(<Header />);
+    render(<Header children={'Cocktail Night'} />);
 
     const heading = screen.getByRole('heading', { level: 1 });
 
