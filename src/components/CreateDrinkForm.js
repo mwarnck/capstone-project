@@ -42,7 +42,6 @@ export default function CreateDrinkForm({ addNewDrink }) {
       strMeasure4: data.measure4,
       strMeasure5: data.measure5,
     };
-    console.log(newDrink);
     addNewDrink(newDrink);
     reset();
     navigate(-1);
@@ -62,6 +61,7 @@ export default function CreateDrinkForm({ addNewDrink }) {
             type="text"
             id="drinkName"
             placeholder="name"
+            maxLength={31}
             autoFocus
             {...register('drinkName', {
               required: {
@@ -121,6 +121,7 @@ export default function CreateDrinkForm({ addNewDrink }) {
               type="text"
               id="ingredient1"
               placeholder="e.g. Orange juice"
+              maxLength={31}
               {...register('ingredient1', {
                 required: {
                   value: true,
@@ -144,6 +145,7 @@ export default function CreateDrinkForm({ addNewDrink }) {
               type="text"
               id="measure1"
               placeholder="e.g. 3 oz"
+              maxLength={11}
               {...register('measure1', {
                 required: {
                   value: true,
@@ -167,6 +169,7 @@ export default function CreateDrinkForm({ addNewDrink }) {
               type="text"
               id="ingredient2"
               placeholder="e.g. Orange juice"
+              maxLength={31}
               {...register('ingredient2', {
                 minLength: {
                   value: 2,
@@ -186,6 +189,7 @@ export default function CreateDrinkForm({ addNewDrink }) {
               type="text"
               id="measure2"
               placeholder="e.g. 3 oz"
+              maxLength={11}
               {...register('measure2', {
                 minLength: {
                   value: 2,
@@ -205,6 +209,7 @@ export default function CreateDrinkForm({ addNewDrink }) {
               type="text"
               id="ingredient3"
               placeholder="e.g. Orange juice"
+              maxLength={31}
               {...register('ingredient3', {
                 minLength: {
                   value: 2,
@@ -224,6 +229,7 @@ export default function CreateDrinkForm({ addNewDrink }) {
               type="text"
               id="measure3"
               placeholder="e.g. 3 oz"
+              maxLength={11}
               {...register('measure3', {
                 minLength: {
                   value: 2,
@@ -242,6 +248,7 @@ export default function CreateDrinkForm({ addNewDrink }) {
             <FormInput
               type="text"
               id="ingredient4"
+              maxLength={31}
               placeholder="e.g. Orange juice"
               {...register('ingredient4', {
                 minLength: {
@@ -262,6 +269,7 @@ export default function CreateDrinkForm({ addNewDrink }) {
               type="text"
               id="measure4"
               placeholder="e.g. 3 oz"
+              maxLength={11}
               {...register('measure4', {
                 minLength: {
                   value: 2,
@@ -281,6 +289,7 @@ export default function CreateDrinkForm({ addNewDrink }) {
               type="text"
               id="ingredient5"
               placeholder="e.g. Orange juice"
+              maxLength={31}
               {...register('ingredient5', {
                 minLength: {
                   value: 2,
@@ -300,6 +309,7 @@ export default function CreateDrinkForm({ addNewDrink }) {
               type="text"
               id="measure5"
               placeholder="e.g. 3 oz"
+              maxLength={11}
               {...register('measure5', {
                 minLength: {
                   value: 2,
@@ -320,6 +330,7 @@ export default function CreateDrinkForm({ addNewDrink }) {
             id="instructions"
             placeholder="Add some instructions for preparing your drink..."
             rows="5"
+            maxLength={301}
             {...register('instructions', {
               required: {
                 value: true,
