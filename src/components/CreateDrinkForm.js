@@ -13,6 +13,7 @@ export default function CreateDrinkForm({ addNewDrink }) {
     reset,
     formState: { errors, isDirty },
   } = useForm({
+    mode: 'all',
     defaultValues: {
       drinkName: '',
       alcoholic: 'alcoholic',
