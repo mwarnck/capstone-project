@@ -387,7 +387,7 @@ const StyledForm = styled.form`
 
     &:focus {
       outline: none;
-      border: 2px solid #0392b0;
+      border-color: #0392b0;
     }
   }
 `;
@@ -418,7 +418,7 @@ const FormInput = styled.input`
 
   &:focus {
     outline: none;
-    border: 2px solid #0392b0;
+    border-color: #0392b0;
   }
 `;
 
@@ -428,13 +428,13 @@ const FormSelect = styled.select`
   font-family: sans-serif;
   border: 1px solid #f28d35;
   border-radius: 5px;
-  background-color: #b8c7cf;
+  background-color: #c1e2e6;
   padding: 5px 5px;
 
   &:focus {
     outline: none;
-    border: 2px solid #0392b0;
-    border-radius: inherit;
+    border-color: #0392b0;
+    border-radius: 5px;
   }
 `;
 
