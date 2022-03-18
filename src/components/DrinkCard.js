@@ -5,7 +5,7 @@ import bookmarkInactive from '../icons/sunBookmarkInactive.svg';
 
 export default function DrinkCard({ drink, toggleBookmark }) {
   return (
-    <DrinkContainer to={`/${drink.idDrink}`}>
+    <DrinkContainer>
       <BookmarkButton
         type="button"
         onClick={() => toggleBookmark(drink.idDrink)}
@@ -30,7 +30,10 @@ export default function DrinkCard({ drink, toggleBookmark }) {
       <LinkContainer to={`/${drink.idDrink}`}>
         <Wrapper>
           <DrinkImage
-            src={drink.strDrinkThumb}
+            src={
+              drink.strDrinkThumb ??
+              'https://source.unsplash.com/random/100×100/?cocktail'
+            }
             alt={drink.strDrink}
             width={100}
             height={100}

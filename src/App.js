@@ -4,9 +4,11 @@ import styled from 'styled-components';
 import Header from './components/Header.js';
 import DrinkListPage from './pages/DrinkListPage.js';
 import BookmarksPage from './pages/BookmarksPage.js';
+import MyDrinksPage from './pages/MyDrinksPage.js';
 import DrinkPage from './components/DrinkPage.js';
 import LoadingScreen from './components/LoadingScreen.js';
 import Navigation from './components/Navigation.js';
+import CreateDrinkForm from './components/CreateDrinkForm.js';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -60,6 +62,19 @@ function App() {
                 />
               }
             />
+            <Route
+              path="/myDrinks"
+              element={
+                <MyDrinksPage
+                  drinks={fetchedDrinks}
+                  toggleBookmark={toggleBookmark}
+                />
+              }
+            />
+            <Route
+              path="/createDrinkForm"
+              element={<CreateDrinkForm addNewDrink={addNewDrink} />}
+            />
             {fetchedDrinks.map(drink => (
               <Route
                 key={drink.idDrink}
@@ -108,6 +123,10 @@ function App() {
 
   function handleChangeFilterBookmarks(value) {
     setCurrentFilterBookmarks(value);
+  }
+
+  function addNewDrink(newDrink) {
+    setFetchedDrinks([...fetchedDrinks, newDrink]);
   }
 
   function saveToLocal(key, data) {

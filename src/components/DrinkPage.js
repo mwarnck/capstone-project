@@ -42,7 +42,10 @@ export default function DrinkPage({ drink, toggleBookmark }) {
         <li>{drink.strGlass}</li>
       </ShortFactsList>
       <DrinkImage
-        src={drink.strDrinkThumb}
+        src={
+          drink.strDrinkThumb ??
+          'https://source.unsplash.com/random/250×250/?cocktail'
+        }
         alt={drink.strDrink}
         width={250}
         height={250}
