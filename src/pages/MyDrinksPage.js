@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Header from '../components/Header.js';
 import DrinkCard from '../components/DrinkCard.js';
 import addNewDrinkIcon from '../icons/addNewDrinkIcon.svg';
 import { useNavigate } from 'react-router-dom';
@@ -7,32 +8,45 @@ export default function MyDrinksPage({ drinks, toggleBookmark }) {
   const navigate = useNavigate();
 
   return (
-    <DrinklistContainer>
-      <MyDrinksHeadline>My own Drinks</MyDrinksHeadline>
-      <AddDrinkButton onClick={() => navigate('/createDrinkForm')}>
-        <img src={addNewDrinkIcon} width="50" height="50" alt="add new drink" />
-        <span className="sr-only">Add new drink icon</span>
-      </AddDrinkButton>
-      {drinks &&
-        drinks
-          .filter(drink => drink.isMyDrink === true)
+    <PageContainer>
+      <Header>My Drinks</Header>
+      <DrinklistContainer>
+        <MyDrinksHeadline>Create Drinks -&gt;</MyDrinksHeadline>
+        <AddDrinkButton onClick={() => navigate('/createDrinkForm')}>
+          <img
+            src={addNewDrinkIcon}
+            width="50"
+            height="50"
+            alt="add new drink"
+          />
+          <span className="sr-only">Add new drink icon</span>
+        </AddDrinkButton>
+        {drinks &&
+          drinks
+            .filter(drink => drink.isMyDrink === true)
 
-          .map(drink => (
-            <DrinkCard
-              key={drink.idDrink}
-              drink={drink}
-              toggleBookmark={toggleBookmark}
-            />
-          ))}
-      {drinks.filter(drink => drink.isMyDrink === true).length < 1 && (
-        <EmptyState>
-          There is nothing to show at the moment. Start with creating your own
-          Drinks by clicking on the "+" icon.
-        </EmptyState>
-      )}
-    </DrinklistContainer>
+            .map(drink => (
+              <DrinkCard
+                key={drink.idDrink}
+                drink={drink}
+                toggleBookmark={toggleBookmark}
+              />
+            ))}
+        {drinks.filter(drink => drink.isMyDrink === true).length < 1 && (
+          <EmptyState>
+            There is nothing to show at the moment. Start with creating your own
+            Drinks by clicking on the "+" icon.
+          </EmptyState>
+        )}
+      </DrinklistContainer>
+    </PageContainer>
   );
 }
+
+const PageContainer = styled.main`
+  display: grid;
+  grid-template-rows: 48px 1fr;
+`;
 
 const DrinklistContainer = styled.section`
   display: grid;

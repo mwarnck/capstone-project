@@ -77,9 +77,13 @@ export default function Navigation() {
 }
 
 const NavBar = styled.nav`
+  width: 100%;
+  height: 48px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   place-items: center;
+  position: fixed;
+  bottom: 0;
   padding: 0;
   margin-top: 0;
   margin-bottom: 0;

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Header from '../components/Header.js';
 import DrinkCard from '../components/DrinkCard.js';
 import Searchbar from '../components/Searchbar.js';
 import FilterDrinks from '../components/FilterDrinks.js';
@@ -12,41 +13,51 @@ export default function DrinkListPage({
   currentFilter,
 }) {
   return (
-    <DrinklistContainer>
-      <Searchbar
-        handleChangeSearch={handleChangeSearch}
-        searchValue={searchValue}
-      />
-      <FilterDrinks
-        handleChangeFilter={handleChangeFilter}
-        currentFilter={currentFilter}
-      />
-      {drinks &&
-        drinks
-          .filter(drink =>
-            drink.strDrink.trim().toLowerCase().includes(searchValue.trim())
-          )
-          .filter(
-            drink =>
-              drink.strAlcoholic.toLowerCase() === currentFilter ||
-              currentFilter === 'all'
-          )
-          .map(drink => (
-            <DrinkCard
-              key={drink.idDrink}
-              drink={drink}
-              toggleBookmark={toggleBookmark}
-            />
-          ))}
-      {drinks &&
-        drinks.filter(drink =>
-          drink.strDrink.trim().toLowerCase().includes(searchValue)
-        ).length < 1 && (
-          <EmptyState>There are no results for your search input...</EmptyState>
-        )}
-    </DrinklistContainer>
+    <PageContainer>
+      <Header>Cocktail Night</Header>
+      <DrinklistContainer>
+        <Searchbar
+          handleChangeSearch={handleChangeSearch}
+          searchValue={searchValue}
+        />
+        <FilterDrinks
+          handleChangeFilter={handleChangeFilter}
+          currentFilter={currentFilter}
+        />
+        {drinks &&
+          drinks
+            .filter(drink =>
+              drink.strDrink.trim().toLowerCase().includes(searchValue.trim())
+            )
+            .filter(
+              drink =>
+                drink.strAlcoholic.toLowerCase() === currentFilter ||
+                currentFilter === 'all'
+            )
+            .map(drink => (
+              <DrinkCard
+                key={drink.idDrink}
+                drink={drink}
+                toggleBookmark={toggleBookmark}
+              />
+            ))}
+        {drinks &&
+          drinks.filter(drink =>
+            drink.strDrink.trim().toLowerCase().includes(searchValue)
+          ).length < 1 && (
+            <EmptyState>
+              There are no results for your search input...
+            </EmptyState>
+          )}
+      </DrinklistContainer>
+    </PageContainer>
   );
 }
+
+const PageContainer = styled.main`
+  display: grid;
+  grid-template-rows: 48px 1fr;
+`;
 
 const DrinklistContainer = styled.section`
   display: grid;

@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import styled from 'styled-components';
-import Header from './components/Header.js';
 import DrinkListPage from './pages/DrinkListPage.js';
 import BookmarksPage from './pages/BookmarksPage.js';
 import MyDrinksPage from './pages/MyDrinksPage.js';
@@ -36,8 +35,7 @@ function App() {
   } else {
     return (
       <AppGrid>
-        <Header>Cocktail Night</Header>
-        <PageContainer>
+        <main>
           <Routes>
             <Route
               path="/"
@@ -87,7 +85,7 @@ function App() {
               />
             ))}
           </Routes>
-        </PageContainer>
+        </main>
         <Navigation />
       </AppGrid>
     );
@@ -148,10 +146,8 @@ export default App;
 
 const AppGrid = styled.div`
   height: 100vh;
-  display: grid;
-  grid-template-rows: 48px 1fr 48px;
-`;
 
-const PageContainer = styled.main`
-  overflow-y: auto;
+  main {
+    padding-bottom: 50px;
+  }
 `;

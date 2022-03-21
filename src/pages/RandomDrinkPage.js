@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import Header from '../components/Header.js';
 
 export default function RandomDrinkPage() {
   const [randomDrink, setRandomDrink] = useState({});
@@ -9,124 +10,127 @@ export default function RandomDrinkPage() {
   }, []);
 
   return (
-    <DrinkContainer>
-      <RandomDrinkButton onClick={getRandomDrink}>
-        Mix a drink!
-      </RandomDrinkButton>
-      <DrinkName>{randomDrink.strDrink}</DrinkName>
-      <ShortFactsList role="list">
-        <li>{randomDrink.strCategory}</li>
-        <li>{randomDrink.strAlcoholic}</li>
-        <li>{randomDrink.strGlass}</li>
-      </ShortFactsList>
-      <DrinkImage
-        src={randomDrink.strDrinkThumb}
-        alt={randomDrink.strDrink}
-        width={250}
-        height={250}
-      ></DrinkImage>
-      <IngredientsContainer>
-        <SubHeading>Ingredients:</SubHeading>
-        <IngredientsList role="list">
-          <IngredientMeasureWrapper>
-            <dt>
-              <strong>{randomDrink.strIngredient1}</strong>
-            </dt>
-            <dd>{randomDrink.strMeasure1}</dd>
-          </IngredientMeasureWrapper>
-          <IngredientMeasureWrapper>
-            <dt>
-              <strong>{randomDrink.strIngredient2}</strong>
-            </dt>
-            <dd>{randomDrink.strMeasure2}</dd>
-          </IngredientMeasureWrapper>
-          <IngredientMeasureWrapper>
-            <dt>
-              <strong>{randomDrink.strIngredient3}</strong>
-            </dt>
-            <dd>{randomDrink.strMeasure3}</dd>
-          </IngredientMeasureWrapper>
-          <IngredientMeasureWrapper>
-            <dt>
-              <strong>{randomDrink.strIngredient4}</strong>
-            </dt>
-            <dd>{randomDrink.strMeasure4}</dd>
-          </IngredientMeasureWrapper>
-          <IngredientMeasureWrapper>
-            <dt>
-              <strong>{randomDrink.strIngredient5}</strong>
-            </dt>
-            <dd>{randomDrink.strMeasure5}</dd>
-          </IngredientMeasureWrapper>
-          <IngredientMeasureWrapper>
-            <dt>
-              <strong>{randomDrink.strIngredient6}</strong>
-            </dt>
-            <dd>{randomDrink.strMeasure6}</dd>
-          </IngredientMeasureWrapper>
-          <IngredientMeasureWrapper>
-            <dt>
-              <strong>{randomDrink.strIngredient7}</strong>
-            </dt>
-            <dd>{randomDrink.strMeasure7}</dd>
-          </IngredientMeasureWrapper>
-          <IngredientMeasureWrapper>
-            <dt>
-              <strong>{randomDrink.strIngredient8}</strong>
-            </dt>
-            <dd>{randomDrink.strMeasure8}</dd>
-          </IngredientMeasureWrapper>
-          <IngredientMeasureWrapper>
-            <dt>
-              <strong>{randomDrink.strIngredient9}</strong>
-            </dt>
-            <dd>{randomDrink.strMeasure9}</dd>
-          </IngredientMeasureWrapper>
-          <IngredientMeasureWrapper>
-            <dt>
-              <strong>{randomDrink.strIngredient10}</strong>
-            </dt>
-            <dd>{randomDrink.strMeasure10}</dd>
-          </IngredientMeasureWrapper>
-          <IngredientMeasureWrapper>
-            <dt>
-              <strong>{randomDrink.strIngredient11}</strong>
-            </dt>
-            <dd>{randomDrink.strMeasure11}</dd>
-          </IngredientMeasureWrapper>
-          <IngredientMeasureWrapper>
-            <dt>
-              <strong>{randomDrink.strIngredient12}</strong>
-            </dt>
-            <dd>{randomDrink.strMeasure12}</dd>
-          </IngredientMeasureWrapper>
-          <IngredientMeasureWrapper>
-            <dt>
-              <strong>{randomDrink.strIngredient13}</strong>
-            </dt>
-            <dd>{randomDrink.strMeasure13}</dd>
-          </IngredientMeasureWrapper>
-          <IngredientMeasureWrapper>
-            <dt>
-              <strong>{randomDrink.strIngredient14}</strong>
-            </dt>
-            <dd>{randomDrink.strMeasure14}</dd>
-          </IngredientMeasureWrapper>
-          <IngredientMeasureWrapper>
-            <dt>
-              <strong>{randomDrink.strIngredient15}</strong>
-            </dt>
-            <dd>{randomDrink.strMeasure15}</dd>
-          </IngredientMeasureWrapper>
-        </IngredientsList>
-      </IngredientsContainer>
-      <InstructionsContainer>
-        <SubHeading>Instructions:</SubHeading>
-        <DrinkInstruction data-testid="instructions">
-          {randomDrink.strInstructions}
-        </DrinkInstruction>
-      </InstructionsContainer>
-    </DrinkContainer>
+    <PageContainer>
+      <Header>Surprise Drink</Header>
+      <DrinkContainer>
+        <RandomDrinkButton onClick={getRandomDrink}>
+          Mix a drink!
+        </RandomDrinkButton>
+        <DrinkName>{randomDrink.strDrink}</DrinkName>
+        <ShortFactsList role="list">
+          <li>{randomDrink.strCategory}</li>
+          <li>{randomDrink.strAlcoholic}</li>
+          <li>{randomDrink.strGlass}</li>
+        </ShortFactsList>
+        <DrinkImage
+          src={randomDrink.strDrinkThumb}
+          alt={randomDrink.strDrink}
+          width={250}
+          height={250}
+        ></DrinkImage>
+        <IngredientsContainer>
+          <SubHeading>Ingredients:</SubHeading>
+          <IngredientsList role="list">
+            <IngredientMeasureWrapper>
+              <dt>
+                <strong>{randomDrink.strIngredient1}</strong>
+              </dt>
+              <dd>{randomDrink.strMeasure1}</dd>
+            </IngredientMeasureWrapper>
+            <IngredientMeasureWrapper>
+              <dt>
+                <strong>{randomDrink.strIngredient2}</strong>
+              </dt>
+              <dd>{randomDrink.strMeasure2}</dd>
+            </IngredientMeasureWrapper>
+            <IngredientMeasureWrapper>
+              <dt>
+                <strong>{randomDrink.strIngredient3}</strong>
+              </dt>
+              <dd>{randomDrink.strMeasure3}</dd>
+            </IngredientMeasureWrapper>
+            <IngredientMeasureWrapper>
+              <dt>
+                <strong>{randomDrink.strIngredient4}</strong>
+              </dt>
+              <dd>{randomDrink.strMeasure4}</dd>
+            </IngredientMeasureWrapper>
+            <IngredientMeasureWrapper>
+              <dt>
+                <strong>{randomDrink.strIngredient5}</strong>
+              </dt>
+              <dd>{randomDrink.strMeasure5}</dd>
+            </IngredientMeasureWrapper>
+            <IngredientMeasureWrapper>
+              <dt>
+                <strong>{randomDrink.strIngredient6}</strong>
+              </dt>
+              <dd>{randomDrink.strMeasure6}</dd>
+            </IngredientMeasureWrapper>
+            <IngredientMeasureWrapper>
+              <dt>
+                <strong>{randomDrink.strIngredient7}</strong>
+              </dt>
+              <dd>{randomDrink.strMeasure7}</dd>
+            </IngredientMeasureWrapper>
+            <IngredientMeasureWrapper>
+              <dt>
+                <strong>{randomDrink.strIngredient8}</strong>
+              </dt>
+              <dd>{randomDrink.strMeasure8}</dd>
+            </IngredientMeasureWrapper>
+            <IngredientMeasureWrapper>
+              <dt>
+                <strong>{randomDrink.strIngredient9}</strong>
+              </dt>
+              <dd>{randomDrink.strMeasure9}</dd>
+            </IngredientMeasureWrapper>
+            <IngredientMeasureWrapper>
+              <dt>
+                <strong>{randomDrink.strIngredient10}</strong>
+              </dt>
+              <dd>{randomDrink.strMeasure10}</dd>
+            </IngredientMeasureWrapper>
+            <IngredientMeasureWrapper>
+              <dt>
+                <strong>{randomDrink.strIngredient11}</strong>
+              </dt>
+              <dd>{randomDrink.strMeasure11}</dd>
+            </IngredientMeasureWrapper>
+            <IngredientMeasureWrapper>
+              <dt>
+                <strong>{randomDrink.strIngredient12}</strong>
+              </dt>
+              <dd>{randomDrink.strMeasure12}</dd>
+            </IngredientMeasureWrapper>
+            <IngredientMeasureWrapper>
+              <dt>
+                <strong>{randomDrink.strIngredient13}</strong>
+              </dt>
+              <dd>{randomDrink.strMeasure13}</dd>
+            </IngredientMeasureWrapper>
+            <IngredientMeasureWrapper>
+              <dt>
+                <strong>{randomDrink.strIngredient14}</strong>
+              </dt>
+              <dd>{randomDrink.strMeasure14}</dd>
+            </IngredientMeasureWrapper>
+            <IngredientMeasureWrapper>
+              <dt>
+                <strong>{randomDrink.strIngredient15}</strong>
+              </dt>
+              <dd>{randomDrink.strMeasure15}</dd>
+            </IngredientMeasureWrapper>
+          </IngredientsList>
+        </IngredientsContainer>
+        <InstructionsContainer>
+          <SubHeading>Instructions:</SubHeading>
+          <DrinkInstruction data-testid="instructions">
+            {randomDrink.strInstructions}
+          </DrinkInstruction>
+        </InstructionsContainer>
+      </DrinkContainer>
+    </PageContainer>
   );
 
   async function getRandomDrink() {
@@ -141,6 +145,11 @@ export default function RandomDrinkPage() {
     }
   }
 }
+
+const PageContainer = styled.main`
+  display: grid;
+  grid-template-rows: 48px 1fr;
+`;
 
 const DrinkContainer = styled.div`
   display: grid;
