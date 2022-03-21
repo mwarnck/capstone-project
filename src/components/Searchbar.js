@@ -39,6 +39,6 @@ const InputField = styled.input`
 
   &:focus {
     outline: none;
-    border-color: #0392b0;
+    border-color: var(--bg-color-button);
   }
 `;

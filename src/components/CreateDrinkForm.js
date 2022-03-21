@@ -391,13 +391,13 @@ const StyledForm = styled.form`
 
   textarea {
     width: 100%;
-    border: 1px solid #f28d35;
+    border: 1px solid var(--bg-color-secondary);
     border-radius: 5px;
     padding: 3px 5px;
 
     &:focus {
       outline: none;
-      border-color: #0392b0;
+      border-color: var(bg-color-button);
     }
   }
 `;
@@ -419,26 +419,26 @@ const IngredientsGrid = styled.div`
 
 const FormInput = styled.input`
   width: 100%;
-  border: 1px solid #f28d35;
+  border: 1px solid var(--bg-color-secondary);
   border-radius: 5px;
   padding: 5px 5px;
 
   &:focus {
     outline: none;
-    border-color: #0392b0;
+    border-color: var(bg-color-button);
   }
 `;
 
 const FormSelect = styled.select`
   width: 100%;
-  border: 1px solid #f28d35;
+  border: 1px solid var(--bg-color-secondary);
   border-radius: 5px;
   background-color: var(--font-color-text-bright);
   padding: 5px 5px;
 
   &:focus {
     outline: none;
-    border-color: #0392b0;
+    border-color: var(bg-color-button);
     border-radius: 5px;
   }
 `;
