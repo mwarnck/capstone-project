@@ -56,7 +56,7 @@ const EmptyState = styled.p`
 const MyDrinksHeadline = styled.h2`
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 1.3rem;
-  color: #f28d35;
+  color: var(--font-color-headlines-bright);
   text-align: center;
   margin: 20px auto;
 `;
@@ -65,6 +65,6 @@ const AddDrinkButton = styled.button`
   position: absolute;
   right: 10px;
   top: 10px;
-  background-color: #fff;
+  background-color: var(--bg-color-main);
   border-style: none;
 `;

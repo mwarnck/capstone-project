@@ -155,21 +155,21 @@ const RandomDrinkButton = styled.button`
   height: 40px;
   font-size: 1.1rem;
   font-family: sans-serif;
-  color: #fff;
-  background-color: #0392b0;
-  border: 2px solid #0392b0;
+  color: var(--font-color-headlines-bright);
+  background-color: var(--bg-color-button);
+  border: 2px solid var(--bg-color-button);
   padding: 0 20px;
 
   &:focus,
   &:hover {
     outline: none;
-    border-color: #f28d35;
+    border-color: var(--bg-color-secondary);
   }
 `;
 
 const DrinkName = styled.h2`
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  color: #f28d35;
+  color: var(--font-color-headlines-bright);
   max-width: 200px;
   text-align: center;
 `;
@@ -184,8 +184,8 @@ const ShortFactsList = styled.ul`
     font-size: 0.9rem;
     border-radius: 20px;
     padding: 5px 8px;
-    background-color: #f28d35;
-    color: #fff;
+    background-color: var(--bg-color-secondary);
+    color: var(--font-color-text-dark);
   }
 `;
 
@@ -206,7 +206,7 @@ const IngredientMeasureWrapper = styled.div`
 
 const SubHeading = styled.p`
   font-weight: bold;
-  color: #f28d35;
+  color: var(--font-color-headlines-bright);
 `;
 
 const IngredientsList = styled.dl`

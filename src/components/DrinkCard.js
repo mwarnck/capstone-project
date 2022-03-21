@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import bookmarkActive from '../icons/sunBookmarkActive.svg';
-import bookmarkInactive from '../icons/sunBookmarkInactive.svg';
+import bookmarkActive from '../icons/drinkBookmarkOrange.svg';
+import bookmarkInactive from '../icons/drinkBookmarkBlack.svg';
 
 export default function DrinkCard({ drink, toggleBookmark }) {
   return (
@@ -13,15 +13,15 @@ export default function DrinkCard({ drink, toggleBookmark }) {
         {drink.isBookmarked ? (
           <img
             src={bookmarkActive}
-            width="25"
-            height="25"
+            width="30"
+            height="30"
             alt="active bookmark icon"
           />
         ) : (
           <img
             src={bookmarkInactive}
-            width="25"
-            height="25"
+            width="30"
+            height="30"
             alt="inactive bookmark icon"
           />
         )}
@@ -72,7 +72,7 @@ const BookmarkButton = styled.button`
 const DrinkName = styled.h2`
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   text-decoration: none;
-  color: var(--font-color-headlines-dark);
+  color: var(--bg-color-button);
   font-size: 1.2rem;
 `;
 
