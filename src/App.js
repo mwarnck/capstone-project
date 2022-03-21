@@ -5,6 +5,7 @@ import Header from './components/Header.js';
 import DrinkListPage from './pages/DrinkListPage.js';
 import BookmarksPage from './pages/BookmarksPage.js';
 import MyDrinksPage from './pages/MyDrinksPage.js';
+import RandomDrinkPage from './pages/RandomDrinkPage.js';
 import DrinkPage from './components/DrinkPage.js';
 import LoadingScreen from './components/LoadingScreen.js';
 import Navigation from './components/Navigation.js';
@@ -75,6 +76,7 @@ function App() {
               path="/createDrinkForm"
               element={<CreateDrinkForm addNewDrink={addNewDrink} />}
             />
+            <Route path="/randomDrink" element={<RandomDrinkPage />} />
             {fetchedDrinks.map(drink => (
               <Route
                 key={drink.idDrink}

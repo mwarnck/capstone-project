@@ -9,7 +9,7 @@ export default createGlobalStyle`
 
  body {
    font-family: sans-serif;
-   background-color: #fff;
+   background-color: #FFF;
  }
 
  .sr-only{
