@@ -391,8 +391,6 @@ const StyledForm = styled.form`
 
   textarea {
     width: 100%;
-    font-size: 16px;
-    font-family: sans-serif;
     border: 1px solid #f28d35;
     border-radius: 5px;
     padding: 3px 5px;
@@ -417,13 +415,10 @@ const IngredientsGrid = styled.div`
   gap: 5px;
   grid-template-columns: 2fr 1fr;
   grid-template-rows: repeat(5, 1fr);
-  //margin: 5px auto;
 `;
 
 const FormInput = styled.input`
   width: 100%;
-  font-size: 16px;
-  font-family: sans-serif;
   border: 1px solid #f28d35;
   border-radius: 5px;
   padding: 5px 5px;
@@ -436,8 +431,6 @@ const FormInput = styled.input`
 
 const FormSelect = styled.select`
   width: 100%;
-  font-size: 16px;
-  font-family: sans-serif;
   border: 1px solid #f28d35;
   border-radius: 5px;
   background-color: #c1e2e6;

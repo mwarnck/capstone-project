@@ -53,9 +53,9 @@ export default function DrinkCard({ drink, toggleBookmark }) {
 }
 
 const DrinkContainer = styled.section`
-  border: 1px solid black;
+  border: 1px solid var(--bg-color-secondary);
   border-radius: 5px;
-  background-color: #f4f2e8;
+  background-color: var(--bg-color-secondary);
   margin-bottom: 0;
   padding-top: 10px;
   position: relative;
@@ -66,13 +66,13 @@ const BookmarkButton = styled.button`
   right: 5px;
   top: 5px;
   border-style: none;
-  background-color: #f4f2e8;
+  background-color: var(--bg-color-secondary);
 `;
 
 const DrinkName = styled.h2`
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   text-decoration: none;
-  color: #f28d35;
+  color: var(--font-color-headlines-dark);
   font-size: 1.2rem;
 `;
 
@@ -99,7 +99,7 @@ const DrinkImage = styled.img`
 const ShortFacts = styled.ul`
   list-style: disc inside;
   font-size: 0.9rem;
-  color: #000;
+  color: var(--font-color-text-dark);
   text-decoration: none;
 
   li {
