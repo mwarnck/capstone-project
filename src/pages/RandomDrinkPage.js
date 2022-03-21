@@ -20,10 +20,7 @@ export default function RandomDrinkPage() {
         <li>{randomDrink.strGlass}</li>
       </ShortFactsList>
       <DrinkImage
-        src={
-          randomDrink.strDrinkThumb ??
-          'https://source.unsplash.com/random/250×250/?cocktail'
-        }
+        src={randomDrink.strDrinkThumb}
         alt={randomDrink.strDrink}
         width={250}
         height={250}
@@ -125,7 +122,9 @@ export default function RandomDrinkPage() {
       </IngredientsContainer>
       <InstructionsContainer>
         <SubHeading>Instructions:</SubHeading>
-        <DrinkInstruction>{randomDrink.strInstructions}</DrinkInstruction>
+        <DrinkInstruction data-testid="instructions">
+          {randomDrink.strInstructions}
+        </DrinkInstruction>
       </InstructionsContainer>
     </DrinkContainer>
   );
