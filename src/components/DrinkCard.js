@@ -2,8 +2,9 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import bookmarkActive from '../icons/drinkBookmarkActive.svg';
 import bookmarkInactive from '../icons/drinkBookmarkBlack.svg';
+import deleteIcon from '../icons/deleteIcon.svg';
 
-export default function DrinkCard({ drink, toggleBookmark }) {
+export default function DrinkCard({ drink, toggleBookmark, deleteOwnDrink }) {
   return (
     <DrinkContainer>
       <BookmarkButton
@@ -27,6 +28,14 @@ export default function DrinkCard({ drink, toggleBookmark }) {
         )}
         <span className="sr-only">Bookmark</span>
       </BookmarkButton>
+      {drink.isMyDrink && (
+        <DeleteButton
+          type="button"
+          onClick={() => deleteOwnDrink(drink.idDrink)}
+        >
+          <img src={deleteIcon} widtH="30" height="30" alt="delete icon" />
+        </DeleteButton>
+      )}
       <LinkContainer to={`/${drink.idDrink}`}>
         <Wrapper>
           <DrinkImage
@@ -66,6 +75,14 @@ const BookmarkButton = styled.button`
   position: absolute;
   right: 5px;
   top: 5px;
+  border-style: none;
+  background-color: var(--bg-color-secondary);
+`;
+
+const DeleteButton = styled.button`
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
   border-style: none;
   background-color: var(--bg-color-secondary);
 `;

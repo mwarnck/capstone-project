@@ -66,6 +66,7 @@ function App() {
                 <MyDrinksPage
                   drinks={fetchedDrinks}
                   toggleBookmark={toggleBookmark}
+                  deleteOwnDrink={deleteOwnDrink}
                 />
               }
             />
@@ -109,6 +110,10 @@ function App() {
         }
       })
     );
+  }
+
+  function deleteOwnDrink(id) {
+    setFetchedDrinks(fetchedDrinks.filter(drink => drink.idDrink !== id));
   }
 
   function handleChangeSearch(event) {
