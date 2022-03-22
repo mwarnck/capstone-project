@@ -3,6 +3,7 @@ import Header from '../components/Header.js';
 import DrinkCard from '../components/DrinkCard.js';
 import Searchbar from '../components/Searchbar.js';
 import FilterDrinks from '../components/FilterDrinks.js';
+import Navigation from '../components/Navigation.js';
 
 export default function DrinkListPage({
   drinks,
@@ -50,6 +51,7 @@ export default function DrinkListPage({
             </EmptyState>
           )}
       </DrinklistContainer>
+      <Navigation />
     </PageContainer>
   );
 }

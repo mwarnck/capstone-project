@@ -7,7 +7,6 @@ import MyDrinksPage from './pages/MyDrinksPage.js';
 import RandomDrinkPage from './pages/RandomDrinkPage.js';
 import DrinkPage from './components/DrinkPage.js';
 import LoadingScreen from './components/LoadingScreen.js';
-import Navigation from './components/Navigation.js';
 import CreateDrinkForm from './components/CreateDrinkForm.js';
 
 function App() {
@@ -86,7 +85,6 @@ function App() {
             ))}
           </Routes>
         </main>
-        <Navigation />
       </AppGrid>
     );
   }

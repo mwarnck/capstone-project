@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Header from '../components/Header.js';
 import DrinkCard from '../components/DrinkCard.js';
 import addNewDrinkIcon from '../icons/addNewDrinkIcon.svg';
+import Navigation from '../components/Navigation.js';
 import { useNavigate } from 'react-router-dom';
 
 export default function MyDrinksPage({ drinks, toggleBookmark }) {
@@ -39,6 +40,7 @@ export default function MyDrinksPage({ drinks, toggleBookmark }) {
           </EmptyState>
         )}
       </DrinklistContainer>
+      <Navigation />
     </PageContainer>
   );
 }
@@ -50,7 +52,7 @@ const PageContainer = styled.main`
 
 const DrinklistContainer = styled.section`
   display: grid;
-  gap: 10px;
+  gap: 15px;
   padding-left: 10px;
   padding-right: 10px;
   margin-bottom: 0;

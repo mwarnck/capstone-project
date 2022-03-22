@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Header from '../components/Header.js';
+import Navigation from '../components/Navigation.js';
 
 export default function RandomDrinkPage() {
   const [randomDrink, setRandomDrink] = useState({});
@@ -130,6 +131,7 @@ export default function RandomDrinkPage() {
           </DrinkInstruction>
         </InstructionsContainer>
       </DrinkContainer>
+      <Navigation />
     </PageContainer>
   );
 
