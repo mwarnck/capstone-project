@@ -1,14 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import styled from 'styled-components';
-import Header from './components/Header.js';
 import DrinkListPage from './pages/DrinkListPage.js';
 import BookmarksPage from './pages/BookmarksPage.js';
 import MyDrinksPage from './pages/MyDrinksPage.js';
 import RandomDrinkPage from './pages/RandomDrinkPage.js';
 import DrinkPage from './components/DrinkPage.js';
 import LoadingScreen from './components/LoadingScreen.js';
-import Navigation from './components/Navigation.js';
 import CreateDrinkForm from './components/CreateDrinkForm.js';
 
 function App() {
@@ -36,8 +34,7 @@ function App() {
   } else {
     return (
       <AppGrid>
-        <Header>Cocktail Night</Header>
-        <PageContainer>
+        <main>
           <Routes>
             <Route
               path="/"
@@ -87,8 +84,7 @@ function App() {
               />
             ))}
           </Routes>
-        </PageContainer>
-        <Navigation />
+        </main>
       </AppGrid>
     );
   }
@@ -148,10 +144,8 @@ export default App;
 
 const AppGrid = styled.div`
   height: 100vh;
-  display: grid;
-  grid-template-rows: 48px 1fr 48px;
-`;
 
-const PageContainer = styled.main`
-  overflow-y: auto;
+  main {
+    padding-bottom: 50px;
+  }
 `;

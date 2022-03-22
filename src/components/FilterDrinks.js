@@ -52,13 +52,13 @@ const FilterContainer = styled.form`
     justify-content: space-around;
     border: 2px solid;
     padding: 10px 10px;
-    border: 1px solid black;
+    border: 1px solid var(--font-color-headlines-bright);
   }
 `;
 
 const FilterLegend = styled.legend`
   font-size: 1.2rem;
-  color: #f28d35;
+  color: var(--font-color-headlines-bright);
   font-weight: bold;
   padding-left: 10px;
 `;
@@ -69,21 +69,35 @@ const FilterButton = styled.input`
 
 const LabelAll = styled.label`
   background-color: ${props =>
-    props.currentFilter === 'all' ? '#f28d35' : '#0392b0'};
-  color: ${props => (props.currentFilter === 'all' ? '#fff' : '#000')};
+    props.currentFilter === 'all'
+      ? 'var(--bg-color-button)'
+      : 'var(--bg-color-secondary)'};
+  color: ${props =>
+    props.currentFilter === 'all'
+      ? 'var(--font-color-headlines-bright)'
+      : 'var(--font-color-headlines-dark)'};
   border-radius: 5px;
   padding: 6px 15px;
 `;
 
 const LabelAlcoholic = styled(LabelAll)`
   background-color: ${props =>
-    props.currentFilter === 'alcoholic' ? '#f28d35' : '#0392b0'};
-  color: ${props => (props.currentFilter === 'alcoholic' ? '#fff' : '#000')};
+    props.currentFilter === 'alcoholic'
+      ? 'var(--bg-color-button)'
+      : 'var(--bg-color-secondary)'};
+  color: ${props =>
+    props.currentFilter === 'alcoholic'
+      ? 'var(--font-color-headlines-bright)'
+      : 'var(--font-color-headlines-dark)'};
 `;
 
 const LabelNonAlcoholic = styled(LabelAll)`
   background-color: ${props =>
-    props.currentFilter === 'non alcoholic' ? '#f28d35' : '#0392b0'};
+    props.currentFilter === 'non alcoholic'
+      ? 'var(--bg-color-button)'
+      : 'var(--bg-color-secondary)'};
   color: ${props =>
-    props.currentFilter === 'non alcoholic' ? '#fff' : '#000'};
+    props.currentFilter === 'non alcoholic'
+      ? 'var(--font-color-headlines-bright)'
+      : 'var(--font-color-headlines-dark)'};
 `;

@@ -370,7 +370,7 @@ const GoBackArrow = styled.button`
   position: absolute;
   top: 6px;
   left: 5px;
-  background-color: #fff;
+  background-color: var(--bg-color-main);
   border-style: none;
 `;
 
@@ -391,15 +391,13 @@ const StyledForm = styled.form`
 
   textarea {
     width: 100%;
-    font-size: 16px;
-    font-family: sans-serif;
-    border: 1px solid #f28d35;
+    border: 1px solid var(--bg-color-secondary);
     border-radius: 5px;
     padding: 3px 5px;
 
     &:focus {
       outline: none;
-      border-color: #0392b0;
+      border-color: var(bg-color-button);
     }
   }
 `;
@@ -407,7 +405,7 @@ const StyledForm = styled.form`
 const FormHeadline = styled.h2`
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 1.3rem;
-  color: #f28d35;
+  color: var(--font-color-headlines-bright);
   text-align: center;
   margin: 5px auto;
 `;
@@ -417,35 +415,30 @@ const IngredientsGrid = styled.div`
   gap: 5px;
   grid-template-columns: 2fr 1fr;
   grid-template-rows: repeat(5, 1fr);
-  //margin: 5px auto;
 `;
 
 const FormInput = styled.input`
   width: 100%;
-  font-size: 16px;
-  font-family: sans-serif;
-  border: 1px solid #f28d35;
+  border: 1px solid var(--bg-color-secondary);
   border-radius: 5px;
   padding: 5px 5px;
 
   &:focus {
     outline: none;
-    border-color: #0392b0;
+    border-color: var(bg-color-button);
   }
 `;
 
 const FormSelect = styled.select`
   width: 100%;
-  font-size: 16px;
-  font-family: sans-serif;
-  border: 1px solid #f28d35;
+  border: 1px solid var(--bg-color-secondary);
   border-radius: 5px;
-  background-color: #c1e2e6;
+  background-color: var(--font-color-text-bright);
   padding: 5px 5px;
 
   &:focus {
     outline: none;
-    border-color: #0392b0;
+    border-color: var(bg-color-button);
     border-radius: 5px;
   }
 `;
@@ -462,15 +455,15 @@ const FormButton = styled.button`
   height: 40px;
   font-size: 1.1rem;
   font-family: sans-serif;
-  color: #fff;
-  background-color: #0392b0;
+  color: var(--font-color-headlines-bright);
+  background-color: var(--bg-color-button);
   border-radius: 5px;
-  border: 2px solid #0392b0;
+  border: 2px solid var(--bg-color-button);
   margin: 25px 0;
 
   &:focus,
   &:hover {
     outline: none;
-    border-color: #f28d35;
+    border-color: var(--font-color-headlines-bright);
   }
 `;

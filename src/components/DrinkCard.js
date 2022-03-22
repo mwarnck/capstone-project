@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import bookmarkActive from '../icons/sunBookmarkActive.svg';
-import bookmarkInactive from '../icons/sunBookmarkInactive.svg';
+import bookmarkActive from '../icons/drinkBookmarkActive.svg';
+import bookmarkInactive from '../icons/drinkBookmarkBlack.svg';
 
 export default function DrinkCard({ drink, toggleBookmark }) {
   return (
@@ -13,15 +13,15 @@ export default function DrinkCard({ drink, toggleBookmark }) {
         {drink.isBookmarked ? (
           <img
             src={bookmarkActive}
-            width="25"
-            height="25"
+            width="30"
+            height="30"
             alt="active bookmark icon"
           />
         ) : (
           <img
             src={bookmarkInactive}
-            width="25"
-            height="25"
+            width="30"
+            height="30"
             alt="inactive bookmark icon"
           />
         )}
@@ -53,9 +53,10 @@ export default function DrinkCard({ drink, toggleBookmark }) {
 }
 
 const DrinkContainer = styled.section`
-  border: 1px solid black;
+  border: 1px solid var(--bg-color-secondary);
   border-radius: 5px;
-  background-color: #f4f2e8;
+  background-color: var(--bg-color-secondary);
+  box-shadow: 0px 5px 10px var(--font-color-text-bright);
   margin-bottom: 0;
   padding-top: 10px;
   position: relative;
@@ -66,14 +67,14 @@ const BookmarkButton = styled.button`
   right: 5px;
   top: 5px;
   border-style: none;
-  background-color: #f4f2e8;
+  background-color: var(--bg-color-secondary);
 `;
 
 const DrinkName = styled.h2`
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   text-decoration: none;
-  color: #f28d35;
-  font-size: 1.2rem;
+  color: var(--bg-color-button);
+  font-size: 1.1rem;
 `;
 
 const LinkContainer = styled(NavLink)`
@@ -99,7 +100,7 @@ const DrinkImage = styled.img`
 const ShortFacts = styled.ul`
   list-style: disc inside;
   font-size: 0.9rem;
-  color: #000;
+  color: var(--font-color-text-dark);
   text-decoration: none;
 
   li {

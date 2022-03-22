@@ -5,12 +5,13 @@ export default function Header({ children }) {
 }
 
 const Heading = styled.h1`
-  background-color: #f28d35;
-  color: #fff;
+  background-color: var(--bg-color-main);
+  color: var(--font-color-header);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   align-self: center;
   text-align: center;
   padding-top: 4px;
   margin: 0 0 5px 0;
   height: 100%;
+  border-bottom: 1px solid var(--font-color-text-bright);
 `;

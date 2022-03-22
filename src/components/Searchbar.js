@@ -25,15 +25,20 @@ const SearchbarContainer = styled.div`
 
 const InputLabel = styled.label`
   font-size: 1.2rem;
-  color: #f28d35;
+  color: var(--font-color-headlines-bright);
   font-weight: bold;
   padding-left: 10px;
 `;
 
 const InputField = styled.input`
+  color: var(--font-color-text-dark);
   border-radius: 5px;
-  font-size: 16px;
   height: 35px;
   padding-left: 10px;
   margin-top: 0;
+
+  &:focus {
+    outline: none;
+    border-color: var(--bg-color-button);
+  }
 `;

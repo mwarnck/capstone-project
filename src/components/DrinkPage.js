@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router';
-import bookmarkActive from '../icons/sunBookmarkActive.svg';
-import bookmarkInactive from '../icons/sunBookmarkInactive.svg';
+import bookmarkActive from '../icons/drinkBookmarkActive.svg';
+import bookmarkInactive from '../icons/drinkBookmarkWhite.svg';
 import goBackArrow from '../icons/goBackArrow.svg';
 
 export default function DrinkPage({ drink, toggleBookmark }) {
@@ -22,15 +22,15 @@ export default function DrinkPage({ drink, toggleBookmark }) {
         {drink.isBookmarked ? (
           <img
             src={bookmarkActive}
-            width="25"
-            height="25"
+            width="35"
+            height="35"
             alt="active bookmark icon"
           />
         ) : (
           <img
             src={bookmarkInactive}
-            width="25"
-            height="25"
+            width="35"
+            height="35"
             alt="inactive bookmark icon"
           />
         )}
@@ -157,7 +157,7 @@ const DrinkContainer = styled.div`
   display: grid;
   gap: 25px;
   place-items: center;
-  padding-top: 20px;
+  padding-top: 40px;
   position: relative;
 `;
 
@@ -165,7 +165,7 @@ const GoBackArrow = styled.button`
   position: absolute;
   top: 20px;
   left: 25px;
-  background-color: #fff;
+  background-color: var(--bg-color-main);
   border-style: none;
 `;
 
@@ -174,12 +174,12 @@ const BookmarkButton = styled.button`
   right: 25px;
   top: 20px;
   border-style: none;
-  background-color: #fff;
+  background-color: var(--bg-color-main);
 `;
 
 const DrinkName = styled.h2`
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  color: #f28d35;
+  color: var(--font-color-headlines-bright);
   max-width: 200px;
   text-align: center;
 `;
@@ -194,8 +194,8 @@ const ShortFactsList = styled.ul`
     font-size: 0.9rem;
     border-radius: 20px;
     padding: 5px 8px;
-    background-color: #f28d35;
-    color: #fff;
+    background-color: var(--bg-color-secondary);
+    color: var(--font-color-text-dark);
   }
 `;
 
@@ -216,7 +216,7 @@ const IngredientMeasureWrapper = styled.div`
 
 const SubHeading = styled.p`
   font-weight: bold;
-  color: #f28d35;
+  color: var(--font-color-headlines-bright);
 `;
 
 const IngredientsList = styled.dl`
@@ -224,11 +224,12 @@ const IngredientsList = styled.dl`
 `;
 
 const InstructionsContainer = styled.div`
-  display: grid;
-  gap: 10px;
-  margin: 5px 10px 20px;
+  margin: 5px auto;
+  min-width: 220px;
+  max-width: 70%;
 `;
 
 const DrinkInstruction = styled.p`
+  margin-top: 15px;
   font-size: 0.9rem;
 `;

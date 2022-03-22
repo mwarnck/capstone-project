@@ -7,9 +7,31 @@ export default createGlobalStyle`
     padding: 0;
  }
 
+ :root {
+    --bg-color-main: #0f0e17;
+    --bg-color-secondary: #fffffe;
+    --bg-color-tertiary: #f25f4c;
+    --bg-color-button: #ff8906;
+    --bg-color-bookmark: #e53170;
+    --font-color-headlines-bright: #fffffe;
+    --font-color-headlines-dark: #0f0e17;
+    --font-color-text-bright: #a7a9be;  
+    --font-color-text-dark: #2e2f3e;  
+    --font-color-button: #fffffe;
+    --font-color-header: #ff8906;
+ }
+
  body {
    font-family: sans-serif;
-   background-color: #FFF;
+   background-color: var(--bg-color-main);
+   color: var(--font-color-text-bright)
+ }
+
+ select,
+ input,
+ textarea {
+    font-size: 16px;
+    font-family: sans-serif;
  }
 
  .sr-only{

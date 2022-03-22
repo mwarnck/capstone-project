@@ -1,6 +1,8 @@
 import styled from 'styled-components';
+import Header from '../components/Header.js';
 import DrinkCard from '../components/DrinkCard.js';
 import FilterDrinks from '../components/FilterDrinks.js';
+import Navigation from '../components/Navigation.js';
 
 export default function BookmarksPage({
   drinks,
@@ -9,39 +11,48 @@ export default function BookmarksPage({
   handleChangeFilterBookmarks,
 }) {
   return (
-    <DrinklistContainer>
-      <FilterDrinks
-        handleChangeFilter={handleChangeFilterBookmarks}
-        currentFilter={currentFilterBookmarks}
-      />
-      {drinks &&
-        drinks
-          .filter(drink => drink.isBookmarked === true)
-          .filter(
-            drink =>
-              drink.strAlcoholic.toLowerCase() === currentFilterBookmarks ||
-              currentFilterBookmarks === 'all'
-          )
-          .map(drink => (
-            <DrinkCard
-              key={drink.idDrink}
-              drink={drink}
-              toggleBookmark={toggleBookmark}
-            />
-          ))}
-      {drinks.filter(drink => drink.isBookmarked === true).length < 1 && (
-        <EmptyState>
-          There is nothing on your favorites list at the moment. Start with
-          adding your Drinks by clicking on the sun icon.
-        </EmptyState>
-      )}
-    </DrinklistContainer>
+    <PageContainer>
+      <Header>Favorites</Header>
+      <DrinklistContainer>
+        <FilterDrinks
+          handleChangeFilter={handleChangeFilterBookmarks}
+          currentFilter={currentFilterBookmarks}
+        />
+        {drinks &&
+          drinks
+            .filter(drink => drink.isBookmarked === true)
+            .filter(
+              drink =>
+                drink.strAlcoholic.toLowerCase() === currentFilterBookmarks ||
+                currentFilterBookmarks === 'all'
+            )
+            .map(drink => (
+              <DrinkCard
+                key={drink.idDrink}
+                drink={drink}
+                toggleBookmark={toggleBookmark}
+              />
+            ))}
+        {drinks.filter(drink => drink.isBookmarked === true).length < 1 && (
+          <EmptyState>
+            There is nothing on your favorites list at the moment. Start with
+            adding your Drinks by clicking on the sun icon.
+          </EmptyState>
+        )}
+      </DrinklistContainer>
+      <Navigation />
+    </PageContainer>
   );
 }
 
+const PageContainer = styled.main`
+  display: grid;
+  grid-template-rows: 48px 1fr;
+`;
+
 const DrinklistContainer = styled.section`
   display: grid;
-  gap: 10px;
+  gap: 15px;
   padding-left: 10px;
   padding-right: 10px;
   margin-bottom: 0;
