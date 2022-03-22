@@ -61,7 +61,7 @@ const PageContainer = styled.main`
 
 const DrinklistContainer = styled.section`
   display: grid;
-  gap: 10px;
+  gap: 15px;
   padding-left: 10px;
   padding-right: 10px;
   margin-bottom: 0;

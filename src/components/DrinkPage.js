@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router';
-import bookmarkActive from '../icons/drinkBookmarkOrange.svg';
+import bookmarkActive from '../icons/drinkBookmarkActive.svg';
 import bookmarkInactive from '../icons/drinkBookmarkWhite.svg';
 import goBackArrow from '../icons/goBackArrow.svg';
 

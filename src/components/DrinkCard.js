@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import bookmarkActive from '../icons/drinkBookmarkOrange.svg';
+import bookmarkActive from '../icons/drinkBookmarkActive.svg';
 import bookmarkInactive from '../icons/drinkBookmarkBlack.svg';
 
 export default function DrinkCard({ drink, toggleBookmark }) {
@@ -56,6 +56,7 @@ const DrinkContainer = styled.section`
   border: 1px solid var(--bg-color-secondary);
   border-radius: 5px;
   background-color: var(--bg-color-secondary);
+  box-shadow: 0px 5px 10px var(--font-color-text-bright);
   margin-bottom: 0;
   padding-top: 10px;
   position: relative;
@@ -73,7 +74,7 @@ const DrinkName = styled.h2`
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   text-decoration: none;
   color: var(--bg-color-button);
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 `;
 
 const LinkContainer = styled(NavLink)`

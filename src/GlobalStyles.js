@@ -12,6 +12,7 @@ export default createGlobalStyle`
     --bg-color-secondary: #fffffe;
     --bg-color-tertiary: #f25f4c;
     --bg-color-button: #ff8906;
+    --bg-color-bookmark: #e53170;
     --font-color-headlines-bright: #fffffe;
     --font-color-headlines-dark: #0f0e17;
     --font-color-text-bright: #a7a9be;  

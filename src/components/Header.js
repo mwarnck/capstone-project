@@ -13,4 +13,5 @@ const Heading = styled.h1`
   padding-top: 4px;
   margin: 0 0 5px 0;
   height: 100%;
+  border-bottom: 1px solid var(--font-color-text-bright);
 `;
