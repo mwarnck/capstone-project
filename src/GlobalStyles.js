@@ -18,6 +18,7 @@ export default createGlobalStyle`
     --font-color-text-bright: #a7a9be;  
     --font-color-text-dark: #2e2f3e;  
     --font-color-button: #fffffe;
+    --font-color-header: #ff8906;
  }
 
  body {

@@ -6,7 +6,7 @@ export default function Header({ children }) {
 
 const Heading = styled.h1`
   background-color: var(--bg-color-main);
-  color: var(--bg-color-button);
+  color: var(--font-color-header);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   align-self: center;
   text-align: center;
