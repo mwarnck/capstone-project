@@ -22,15 +22,15 @@ export default function DrinkPage({ drink, toggleBookmark }) {
         {drink.isBookmarked ? (
           <img
             src={bookmarkActive}
-            width="30"
-            height="30"
+            width="35"
+            height="35"
             alt="active bookmark icon"
           />
         ) : (
           <img
             src={bookmarkInactive}
-            width="30"
-            height="30"
+            width="35"
+            height="35"
             alt="inactive bookmark icon"
           />
         )}
@@ -157,7 +157,7 @@ const DrinkContainer = styled.div`
   display: grid;
   gap: 25px;
   place-items: center;
-  padding-top: 20px;
+  padding-top: 40px;
   position: relative;
 `;
 
@@ -224,11 +224,12 @@ const IngredientsList = styled.dl`
 `;
 
 const InstructionsContainer = styled.div`
-  display: grid;
-  gap: 10px;
-  margin: 5px 10px 20px;
+  margin: 5px auto;
+  min-width: 220px;
+  max-width: 70%;
 `;
 
 const DrinkInstruction = styled.p`
+  margin-top: 15px;
   font-size: 0.9rem;
 `;
