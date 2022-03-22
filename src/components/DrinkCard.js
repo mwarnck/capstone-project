@@ -1,9 +1,14 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import DeleteModal from './DeleteModal.js';
 import bookmarkActive from '../icons/drinkBookmarkActive.svg';
 import bookmarkInactive from '../icons/drinkBookmarkBlack.svg';
+import deleteIcon from '../icons/deleteIcon.svg';
+import { useState } from 'react';
 
-export default function DrinkCard({ drink, toggleBookmark }) {
+export default function DrinkCard({ drink, toggleBookmark, deleteOwnDrink }) {
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+
   return (
     <DrinkContainer>
       <BookmarkButton
@@ -27,6 +32,17 @@ export default function DrinkCard({ drink, toggleBookmark }) {
         )}
         <span className="sr-only">Bookmark</span>
       </BookmarkButton>
+      {drink.isMyDrink && (
+        <DeleteButton type="button" onClick={() => setShowDeleteModal(true)}>
+          <img src={deleteIcon} width="30" height="30" alt="delete icon" />
+        </DeleteButton>
+      )}
+      {showDeleteModal && (
+        <DeleteModal
+          confirmDeleteDrink={() => deleteOwnDrink(drink.idDrink)}
+          cancelDeleteDrink={() => setShowDeleteModal(false)}
+        />
+      )}
       <LinkContainer to={`/${drink.idDrink}`}>
         <Wrapper>
           <DrinkImage
@@ -66,6 +82,14 @@ const BookmarkButton = styled.button`
   position: absolute;
   right: 5px;
   top: 5px;
+  border-style: none;
+  background-color: var(--bg-color-secondary);
+`;
+
+const DeleteButton = styled.button`
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
   border-style: none;
   background-color: var(--bg-color-secondary);
 `;

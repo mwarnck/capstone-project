@@ -5,7 +5,11 @@ import addNewDrinkIcon from '../icons/addNewDrinkIcon.svg';
 import Navigation from '../components/Navigation.js';
 import { useNavigate } from 'react-router-dom';
 
-export default function MyDrinksPage({ drinks, toggleBookmark }) {
+export default function MyDrinksPage({
+  drinks,
+  toggleBookmark,
+  deleteOwnDrink,
+}) {
   const navigate = useNavigate();
 
   return (
@@ -31,6 +35,7 @@ export default function MyDrinksPage({ drinks, toggleBookmark }) {
                 key={drink.idDrink}
                 drink={drink}
                 toggleBookmark={toggleBookmark}
+                deleteOwnDrink={deleteOwnDrink}
               />
             ))}
         {drinks.filter(drink => drink.isMyDrink === true).length < 1 && (
