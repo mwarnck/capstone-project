@@ -80,7 +80,11 @@ function App() {
                 key={drink.idDrink}
                 path={`${drink.idDrink}`}
                 element={
-                  <DrinkPage drink={drink} toggleBookmark={toggleBookmark} />
+                  <DrinkPage
+                    drink={drink}
+                    toggleBookmark={toggleBookmark}
+                    saveRatingToDrink={saveRatingToDrink}
+                  />
                 }
               />
             ))}
@@ -105,6 +109,18 @@ function App() {
       fetchedDrinks.map(drink => {
         if (drink.idDrink === id) {
           return { ...drink, isBookmarked: !drink.isBookmarked };
+        } else {
+          return drink;
+        }
+      })
+    );
+  }
+
+  function saveRatingToDrink(index, id) {
+    setFetchedDrinks(
+      fetchedDrinks.map(drink => {
+        if (drink.idDrink === id) {
+          return { ...drink, rating: index };
         } else {
           return drink;
         }
