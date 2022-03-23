@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { nanoid } from 'nanoid';
 import styled from 'styled-components';
 import DrinkListPage from './pages/DrinkListPage.js';
 import BookmarksPage from './pages/BookmarksPage.js';
@@ -15,6 +16,7 @@ function App() {
   const [searchValue, setSearchValue] = useState('');
   const [currentFilter, setCurrentFilter] = useState('all');
   const [currentFilterBookmarks, setCurrentFilterBookmarks] = useState('all');
+  const [commentValue, setCommentValue] = useState('');
 
   useEffect(() => {
     setTimeout(() => {
@@ -84,6 +86,9 @@ function App() {
                     drink={drink}
                     toggleBookmark={toggleBookmark}
                     saveRatingToDrink={saveRatingToDrink}
+                    handleSubmitComment={handleSubmitComment}
+                    commentValue={commentValue}
+                    setCommentValue={setCommentValue}
                   />
                 }
               />
@@ -126,6 +131,31 @@ function App() {
         }
       })
     );
+  }
+
+  function handleSubmitComment(commentValue, id) {
+    const newComment = {
+      commentId: nanoid(),
+      commentText: commentValue,
+    };
+    setFetchedDrinks(
+      fetchedDrinks.map(drink => {
+        if (drink.comments) {
+          if (drink.idDrink === id) {
+            return { ...drink, comments: [...drink.comments, newComment] };
+          } else {
+            return drink;
+          }
+        } else {
+          if (drink.idDrink === id) {
+            return { ...drink, comments: [newComment] };
+          } else {
+            return drink;
+          }
+        }
+      })
+    );
+    setCommentValue('');
   }
 
   function deleteOwnDrink(id) {
