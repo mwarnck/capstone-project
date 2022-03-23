@@ -140,18 +140,14 @@ function App() {
     };
     setFetchedDrinks(
       fetchedDrinks.map(drink => {
-        if (drink.comments) {
-          if (drink.idDrink === id) {
+        if (drink.idDrink === id) {
+          if (drink.comments) {
             return { ...drink, comments: [...drink.comments, newComment] };
           } else {
-            return drink;
+            return { ...drink, comments: [newComment] };
           }
         } else {
-          if (drink.idDrink === id) {
-            return { ...drink, comments: [newComment] };
-          } else {
-            return drink;
-          }
+          return drink;
         }
       })
     );
