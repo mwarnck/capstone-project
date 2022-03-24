@@ -1,13 +1,13 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
-import CreateDrinkForm from './CreateDrinkForm';
+import DrinkForm from './DrinkForm';
 
 describe('CreateDrinkForm', () => {
   it('renders name input, 5 inputs for ingredients and 5 for measures', () => {
     render(
       <MemoryRouter>
-        <CreateDrinkForm />
+        <DrinkForm />
       </MemoryRouter>
     );
 
@@ -24,7 +24,7 @@ describe('CreateDrinkForm', () => {
   it('renders 3 select inputs', () => {
     render(
       <MemoryRouter>
-        <CreateDrinkForm />
+        <DrinkForm />
       </MemoryRouter>
     );
 
@@ -41,7 +41,7 @@ describe('CreateDrinkForm', () => {
   it('renders a textarea for instructions', () => {
     render(
       <MemoryRouter>
-        <CreateDrinkForm />
+        <DrinkForm />
       </MemoryRouter>
     );
 
@@ -52,7 +52,7 @@ describe('CreateDrinkForm', () => {
   it('renders a submit button', () => {
     render(
       <MemoryRouter>
-        <CreateDrinkForm />
+        <DrinkForm />
       </MemoryRouter>
     );
 
@@ -65,7 +65,7 @@ describe('CreateDrinkForm', () => {
     const onSubmit = jest.fn();
     render(
       <MemoryRouter>
-        <CreateDrinkForm onSubmit={handleSubmit(onSubmit)} />
+        <DrinkForm onSubmit={handleSubmit(onSubmit)} />
       </MemoryRouter>
     );
 
@@ -81,7 +81,7 @@ describe('CreateDrinkForm', () => {
     const onSubmit = jest.fn();
     render(
       <MemoryRouter>
-        <CreateDrinkForm onSubmit={handleSubmit(onSubmit)} />
+        <DrinkForm onSubmit={handleSubmit(onSubmit)} />
       </MemoryRouter>
     );
 

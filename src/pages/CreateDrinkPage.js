@@ -1,9 +1,8 @@
-import styled from 'styled-components';
-import CreateDrinkForm from '../components/CreateDrinkForm.js';
+import DrinkForm from '../components/DrinkForm.js';
 
 export default function CreateDrinkPage({ handleNewDrink }) {
   return (
-    <CreateDrinkForm
+    <DrinkForm
       handleNewDrink={handleNewDrink}
       title={'Create your own drink'}
       buttonText={'Create Drink'}
