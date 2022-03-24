@@ -27,7 +27,7 @@ describe('DrinkPage', () => {
     expect(drinkName).toHaveTextContent('Mojito');
 
     const shortFactsIngredients = screen.getAllByRole('list');
-    expect(shortFactsIngredients).toHaveLength(2);
+    expect(shortFactsIngredients).toHaveLength(3);
 
     const image = screen.getByRole('img', { name: /Mojito/i });
     expect(image).toBeInTheDocument();

@@ -1,10 +1,14 @@
 import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { MemoryRouter } from 'react-router-dom';
 import RandomDrinkPage from './RandomDrinkPage';
 
 describe('RandomDrinkPage', () => {
   it('renders heading, ul, image, dl and p element', () => {
-    render(<RandomDrinkPage />);
+    render(
+      <MemoryRouter>
+        <RandomDrinkPage />
+      </MemoryRouter>
+    );
 
     const drinkName = screen.getByRole('heading', { level: 2 });
     expect(drinkName).toBeInTheDocument();

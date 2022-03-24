@@ -1,13 +1,12 @@
 import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import DrinkForm from './DrinkForm';
 
-describe('CreateDrinkForm', () => {
+describe('DrinkForm', () => {
   it('renders name input, 5 inputs for ingredients and 5 for measures', () => {
     render(
       <MemoryRouter>
-        <DrinkForm />
+        <DrinkForm buttonText="Create Drink" title="Create your own drink" />
       </MemoryRouter>
     );
 
@@ -24,7 +23,7 @@ describe('CreateDrinkForm', () => {
   it('renders 3 select inputs', () => {
     render(
       <MemoryRouter>
-        <DrinkForm />
+        <DrinkForm buttonText="Create Drink" title="Create your own drink" />
       </MemoryRouter>
     );
 
@@ -41,7 +40,7 @@ describe('CreateDrinkForm', () => {
   it('renders a textarea for instructions', () => {
     render(
       <MemoryRouter>
-        <DrinkForm />
+        <DrinkForm buttonText="Create Drink" title="Create your own drink" />
       </MemoryRouter>
     );
 
@@ -52,54 +51,11 @@ describe('CreateDrinkForm', () => {
   it('renders a submit button', () => {
     render(
       <MemoryRouter>
-        <DrinkForm />
+        <DrinkForm buttonText="Create Drink" title="Create your own drink" />
       </MemoryRouter>
     );
 
     const submitButton = screen.getByRole('button', { name: /create/i });
     expect(submitButton).toBeInTheDocument();
-  });
-
-  it('not calls the submit function when clicking the button without filling the form', () => {
-    const handleSubmit = jest.fn();
-    const onSubmit = jest.fn();
-    render(
-      <MemoryRouter>
-        <DrinkForm onSubmit={handleSubmit(onSubmit)} />
-      </MemoryRouter>
-    );
-
-    const submitButton = screen.getByRole('button', { name: /create/i });
-    userEvent.click(submitButton);
-
-    expect(handleSubmit).toHaveBeenCalled();
-    expect(onSubmit).not.toHaveBeenCalled();
-  });
-
-  it('calls the submit function when clicking the button when filling required inputs', () => {
-    const handleSubmit = jest.fn();
-    const onSubmit = jest.fn();
-    render(
-      <MemoryRouter>
-        <DrinkForm onSubmit={handleSubmit(onSubmit)} />
-      </MemoryRouter>
-    );
-
-    const nameInput = screen.getByLabelText(/what is the name/i);
-    userEvent.type(nameInput, 'Testname');
-
-    const ingredientInput = screen.getByLabelText(/ingredient 1/i);
-    userEvent.type(ingredientInput, 'Testingredient');
-
-    const measureInput = screen.getByLabelText(/measure 1/i);
-    userEvent.type(measureInput, '10ml');
-
-    const textareaInstructions = screen.getByLabelText(/instructions/i);
-    userEvent.type(textareaInstructions, 'Testinstruction to test');
-
-    const submitButton = screen.getByRole('button', { name: /create/i });
-    userEvent.click(submitButton);
-
-    expect(handleSubmit).toHaveBeenCalled();
   });
 });
