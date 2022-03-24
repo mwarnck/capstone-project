@@ -41,7 +41,7 @@ export default function CreateDrinkForm({
   });
 
   const onSubmit = data => {
-    const newDrink = {
+    handleNewDrink({
       idDrink: nanoid(),
       isMyDrink: true,
       strDrink: data.strDrink,
@@ -59,8 +59,7 @@ export default function CreateDrinkForm({
       strMeasure3: data.strMeasure3,
       strMeasure4: data.strMeasure4,
       strMeasure5: data.strMeasure5,
-    };
-    handleNewDrink(newDrink);
+    });
     reset();
     navigate(-1);
   };
