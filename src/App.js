@@ -9,6 +9,8 @@ import RandomDrinkPage from './pages/RandomDrinkPage.js';
 import DrinkPage from './components/DrinkPage.js';
 import LoadingScreen from './components/LoadingScreen.js';
 import CreateDrinkPage from './pages/CreateDrinkPage.js';
+import EditDrinkPage from './pages/EditDrinkPage.js';
+import { navigate } from '@storybook/addon-links';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -17,6 +19,7 @@ function App() {
   const [currentFilter, setCurrentFilter] = useState('all');
   const [currentFilterBookmarks, setCurrentFilterBookmarks] = useState('all');
   const [commentValue, setCommentValue] = useState('');
+  const [drinkToEdit, setDrinkToEdit] = useState(null);
 
   useEffect(() => {
     setTimeout(() => {
@@ -69,12 +72,22 @@ function App() {
                   drinks={fetchedDrinks}
                   toggleBookmark={toggleBookmark}
                   deleteOwnDrink={deleteOwnDrink}
+                  redirectToEditPage={redirectToEditPage}
                 />
               }
             />
             <Route
               path="/createDrinkPage"
               element={<CreateDrinkPage handleNewDrink={addNewDrink} />}
+            />
+            <Route
+              path="/editDrinkPage"
+              element={
+                <EditDrinkPage
+                  handleNewDrink={editDrink}
+                  drinkToEdit={drinkToEdit}
+                />
+              }
             />
             <Route path="/randomDrink" element={<RandomDrinkPage />} />
             {fetchedDrinks.map(drink => (
@@ -172,6 +185,40 @@ function App() {
 
   function addNewDrink(newDrink) {
     setFetchedDrinks([...fetchedDrinks, newDrink]);
+  }
+
+  function editDrink(newDrink) {
+    setFetchedDrinks(
+      fetchedDrinks.map(drink => {
+        if (drink.idDrink === newDrink.id) {
+          return {
+            ...drink,
+            strDrink: newDrink.strDrink,
+            strCategory: newDrink.strCategory,
+            strAlcoholic: newDrink.strAlcoholic,
+            strGlass: newDrink.strGlass,
+            strInstructions: newDrink.strInstructions,
+            strIngredient1: newDrink.strIngredient1,
+            strIngredient2: newDrink.strIngredient2,
+            strIngredient3: newDrink.strIngredient3,
+            strIngredient4: newDrink.strIngredient4,
+            strIngredient5: newDrink.strIngredient5,
+            strMeasure1: newDrink.strMeasure1,
+            strMeasure2: newDrink.strMeasure2,
+            strMeasure3: newDrink.strMeasure3,
+            strMeasure4: newDrink.strMeasure4,
+            strMeasure5: newDrink.strMeasure5,
+          };
+        } else {
+          return drink;
+        }
+      })
+    );
+  }
+
+  function redirectToEditPage(drink) {
+    setDrinkToEdit({ ...drink });
+    navigate('/editDrinkPage');
   }
 
   function saveToLocal(key, data) {

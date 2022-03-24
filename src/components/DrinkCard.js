@@ -6,7 +6,12 @@ import bookmarkInactive from '../icons/drinkBookmarkBlack.svg';
 import deleteIcon from '../icons/deleteIcon.svg';
 import { useState } from 'react';
 
-export default function DrinkCard({ drink, toggleBookmark, deleteOwnDrink }) {
+export default function DrinkCard({
+  drink,
+  toggleBookmark,
+  deleteOwnDrink,
+  redirectToEditPage,
+}) {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   return (

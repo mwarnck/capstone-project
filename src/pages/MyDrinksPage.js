@@ -9,6 +9,7 @@ export default function MyDrinksPage({
   drinks,
   toggleBookmark,
   deleteOwnDrink,
+  redirectToEditPage,
 }) {
   const navigate = useNavigate();
 
@@ -36,6 +37,7 @@ export default function MyDrinksPage({
                 drink={drink}
                 toggleBookmark={toggleBookmark}
                 deleteOwnDrink={deleteOwnDrink}
+                redirectToEditPage={redirectToEditPage}
               />
             ))}
         {drinks.filter(drink => drink.isMyDrink === true).length < 1 && (
