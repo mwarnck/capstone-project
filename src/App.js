@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { nanoid } from 'nanoid';
 import styled from 'styled-components';
 import DrinkListPage from './pages/DrinkListPage.js';
 import BookmarksPage from './pages/BookmarksPage.js';
@@ -15,6 +16,7 @@ function App() {
   const [searchValue, setSearchValue] = useState('');
   const [currentFilter, setCurrentFilter] = useState('all');
   const [currentFilterBookmarks, setCurrentFilterBookmarks] = useState('all');
+  const [commentValue, setCommentValue] = useState('');
 
   useEffect(() => {
     setTimeout(() => {
@@ -80,7 +82,14 @@ function App() {
                 key={drink.idDrink}
                 path={`${drink.idDrink}`}
                 element={
-                  <DrinkPage drink={drink} toggleBookmark={toggleBookmark} />
+                  <DrinkPage
+                    drink={drink}
+                    toggleBookmark={toggleBookmark}
+                    saveRatingToDrink={saveRatingToDrink}
+                    handleSubmitComment={handleSubmitComment}
+                    commentValue={commentValue}
+                    setCommentValue={setCommentValue}
+                  />
                 }
               />
             ))}
@@ -110,6 +119,39 @@ function App() {
         }
       })
     );
+  }
+
+  function saveRatingToDrink(index, id) {
+    setFetchedDrinks(
+      fetchedDrinks.map(drink => {
+        if (drink.idDrink === id) {
+          return { ...drink, rating: index };
+        } else {
+          return drink;
+        }
+      })
+    );
+  }
+
+  function handleSubmitComment(commentValue, id) {
+    const newComment = {
+      commentId: nanoid(),
+      commentText: commentValue,
+    };
+    setFetchedDrinks(
+      fetchedDrinks.map(drink => {
+        if (drink.idDrink === id) {
+          if (drink.comments) {
+            return { ...drink, comments: [...drink.comments, newComment] };
+          } else {
+            return { ...drink, comments: [newComment] };
+          }
+        } else {
+          return drink;
+        }
+      })
+    );
+    setCommentValue('');
   }
 
   function deleteOwnDrink(id) {

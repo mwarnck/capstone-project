@@ -1,11 +1,21 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router';
+import StarRating from './StarRating.js';
+import CommentBox from './CommentBox.js';
 import bookmarkActive from '../icons/drinkBookmarkActive.svg';
 import bookmarkInactive from '../icons/drinkBookmarkWhite.svg';
 import goBackArrow from '../icons/goBackArrow.svg';
 
-export default function DrinkPage({ drink, toggleBookmark }) {
+export default function DrinkPage({
+  drink,
+  toggleBookmark,
+  saveRatingToDrink,
+  handleSubmitComment,
+  commentValue,
+  setCommentValue,
+}) {
   const navigate = useNavigate();
+  const rating = drink.rating ?? 0;
 
   return (
     <DrinkContainer>
@@ -149,6 +159,18 @@ export default function DrinkPage({ drink, toggleBookmark }) {
         <SubHeading>Instructions:</SubHeading>
         <DrinkInstruction>{drink.strInstructions}</DrinkInstruction>
       </InstructionsContainer>
+      <StarRating
+        rating={rating}
+        saveRatingToDrink={saveRatingToDrink}
+        id={drink.idDrink}
+      />
+      <CommentBox
+        comments={drink.comments}
+        handleSubmitComment={handleSubmitComment}
+        id={drink.idDrink}
+        commentValue={commentValue}
+        setCommentValue={setCommentValue}
+      />
     </DrinkContainer>
   );
 }
@@ -214,7 +236,7 @@ const IngredientMeasureWrapper = styled.div`
   gap: 60px;
 `;
 
-const SubHeading = styled.p`
+const SubHeading = styled.h3`
   font-weight: bold;
   color: var(--font-color-headlines-bright);
 `;
