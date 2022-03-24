@@ -61,7 +61,7 @@ const CommentBoxContainer = styled.div`
   }
 `;
 
-const SubHeading = styled.p`
+const SubHeading = styled.h3`
   font-weight: bold;
   color: var(--font-color-headlines-bright);
 `;

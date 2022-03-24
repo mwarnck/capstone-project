@@ -38,7 +38,7 @@ const RatingContainer = styled.div`
   max-width: 70%;
 `;
 
-const SubHeading = styled.p`
+const SubHeading = styled.h3`
   font-weight: bold;
   color: var(--font-color-headlines-bright);
 `;
