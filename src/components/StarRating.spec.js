@@ -15,10 +15,10 @@ describe('StarRating', () => {
 
   it('calls a function to set rating when clicking a button', () => {
     const ratingCallback = jest.fn();
-    render(<StarRating saveRatingToDrink={ratingCallback} />);
+    render(<StarRating saveRatingToDrink={ratingCallback} id={'321'} />);
 
     const ratingButtons = screen.getAllByRole('button');
     userEvent.click(ratingButtons[0]);
-    expect(ratingCallback).toHaveBeenCalled();
+    expect(ratingCallback).toHaveBeenCalledWith(1, '321');
   });
 });
