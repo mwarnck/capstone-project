@@ -19,12 +19,19 @@ describe('CommentBox', () => {
   it('when the drink has comments in its data, a li element should be rendered', () => {
     render(
       <CommentBox
-        comments={[{ commentId: '123', commentText: 'dies ist ein Comment' }]}
+        comments={[
+          {
+            commentId: '123',
+            commentText: 'This drink tastes very good with ice',
+          },
+        ]}
       />
     );
 
     const commentItem = screen.getByRole('listitem');
-    expect(commentItem).toBeInTheDocument();
+    expect(commentItem).toHaveTextContent(
+      'This drink tastes very good with ice'
+    );
   });
 
   it('when clicking the button a submit function is called', () => {
@@ -34,18 +41,22 @@ describe('CommentBox', () => {
       <CommentBox
         handleSubmitComment={submitCallback}
         setCommentValue={onChangeCallback}
-        commentValue={true}
+        commentValue={'This drink tastes very good with ice'}
+        id={'321'}
       />
     );
 
     const textarea = screen.getByPlaceholderText('Add a comment...');
-    userEvent.type(textarea, 'test');
+    userEvent.type(textarea, 'This drink tastes very good with ice');
 
     expect(onChangeCallback).toHaveBeenCalled();
 
     const submitButton = screen.getByRole('button');
     userEvent.click(submitButton);
 
-    expect(submitCallback).toHaveBeenCalled();
+    expect(submitCallback).toHaveBeenCalledWith(
+      'This drink tastes very good with ice',
+      '321'
+    );
   });
 });
