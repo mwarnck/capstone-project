@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 import styled from 'styled-components';
 import DrinkListPage from './pages/DrinkListPage.js';
@@ -10,7 +11,6 @@ import DrinkPage from './components/DrinkPage.js';
 import LoadingScreen from './components/LoadingScreen.js';
 import CreateDrinkPage from './pages/CreateDrinkPage.js';
 import EditDrinkPage from './pages/EditDrinkPage.js';
-import { navigate } from '@storybook/addon-links';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -20,6 +20,7 @@ function App() {
   const [currentFilterBookmarks, setCurrentFilterBookmarks] = useState('all');
   const [commentValue, setCommentValue] = useState('');
   const [drinkToEdit, setDrinkToEdit] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setTimeout(() => {
@@ -190,7 +191,7 @@ function App() {
   function editDrink(newDrink) {
     setFetchedDrinks(
       fetchedDrinks.map(drink => {
-        if (drink.idDrink === newDrink.id) {
+        if (drink.idDrink === newDrink.idDrink) {
           return {
             ...drink,
             strDrink: newDrink.strDrink,
@@ -214,6 +215,7 @@ function App() {
         }
       })
     );
+    setDrinkToEdit(null);
   }
 
   function redirectToEditPage(drink) {

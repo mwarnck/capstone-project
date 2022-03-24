@@ -4,6 +4,7 @@ import DeleteModal from './DeleteModal.js';
 import bookmarkActive from '../icons/drinkBookmarkActive.svg';
 import bookmarkInactive from '../icons/drinkBookmarkBlack.svg';
 import deleteIcon from '../icons/deleteIcon.svg';
+import editIcon from '../icons/editIcon.svg';
 import { useState } from 'react';
 
 export default function DrinkCard({
@@ -39,7 +40,7 @@ export default function DrinkCard({
       </BookmarkButton>
       {drink.isMyDrink && (
         <DeleteButton type="button" onClick={() => setShowDeleteModal(true)}>
-          <img src={deleteIcon} width="30" height="30" alt="delete icon" />
+          <img src={deleteIcon} width="25" height="25" alt="delete icon" />
         </DeleteButton>
       )}
       {showDeleteModal && (
@@ -47,6 +48,11 @@ export default function DrinkCard({
           confirmDeleteDrink={() => deleteOwnDrink(drink.idDrink)}
           cancelDeleteDrink={() => setShowDeleteModal(false)}
         />
+      )}
+      {drink.isMyDrink && (
+        <EditButton type="button" onClick={() => redirectToEditPage(drink)}>
+          <img src={editIcon} width="25" height="25" alt="edit icon" />
+        </EditButton>
       )}
       <LinkContainer to={`/${drink.idDrink}`}>
         <Wrapper>
@@ -97,6 +103,10 @@ const DeleteButton = styled.button`
   bottom: 5px;
   border-style: none;
   background-color: var(--bg-color-secondary);
+`;
+
+const EditButton = styled(DeleteButton)`
+  bottom: 40px;
 `;
 
 const DrinkName = styled.h2`

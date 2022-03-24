@@ -41,25 +41,46 @@ export default function CreateDrinkForm({
   });
 
   const onSubmit = data => {
-    handleNewDrink({
-      idDrink: nanoid(),
-      isMyDrink: true,
-      strDrink: data.strDrink,
-      strCategory: data.strCategory,
-      strAlcoholic: data.strAlcoholic,
-      strGlass: data.strGlass,
-      strInstructions: data.strInstructions,
-      strIngredient1: data.strIngredient1,
-      strIngredient2: data.strIngredient2,
-      strIngredient3: data.strIngredient3,
-      strIngredient4: data.strIngredient4,
-      strIngredient5: data.strIngredient5,
-      strMeasure1: data.strMeasure1,
-      strMeasure2: data.strMeasure2,
-      strMeasure3: data.strMeasure3,
-      strMeasure4: data.strMeasure4,
-      strMeasure5: data.strMeasure5,
-    });
+    if (preloadedValues) {
+      handleNewDrink({
+        idDrink: preloadedValues.idDrink,
+        strDrink: data.strDrink,
+        strCategory: data.strCategory,
+        strAlcoholic: data.strAlcoholic,
+        strGlass: data.strGlass,
+        strInstructions: data.strInstructions,
+        strIngredient1: data.strIngredient1,
+        strIngredient2: data.strIngredient2,
+        strIngredient3: data.strIngredient3,
+        strIngredient4: data.strIngredient4,
+        strIngredient5: data.strIngredient5,
+        strMeasure1: data.strMeasure1,
+        strMeasure2: data.strMeasure2,
+        strMeasure3: data.strMeasure3,
+        strMeasure4: data.strMeasure4,
+        strMeasure5: data.strMeasure5,
+      });
+    } else {
+      handleNewDrink({
+        idDrink: nanoid(),
+        isMyDrink: true,
+        strDrink: data.strDrink,
+        strCategory: data.strCategory,
+        strAlcoholic: data.strAlcoholic,
+        strGlass: data.strGlass,
+        strInstructions: data.strInstructions,
+        strIngredient1: data.strIngredient1,
+        strIngredient2: data.strIngredient2,
+        strIngredient3: data.strIngredient3,
+        strIngredient4: data.strIngredient4,
+        strIngredient5: data.strIngredient5,
+        strMeasure1: data.strMeasure1,
+        strMeasure2: data.strMeasure2,
+        strMeasure3: data.strMeasure3,
+        strMeasure4: data.strMeasure4,
+        strMeasure5: data.strMeasure5,
+      });
+    }
     reset();
     navigate(-1);
   };
