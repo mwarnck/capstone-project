@@ -4,7 +4,12 @@ import { nanoid } from 'nanoid';
 import { useNavigate } from 'react-router-dom';
 import goBackArrow from '../icons/goBackArrow.svg';
 
-export default function CreateDrinkForm({ addNewDrink }) {
+export default function CreateDrinkForm({
+  handleNewDrink,
+  title,
+  buttonText,
+  preloadedValues,
+}) {
   const navigate = useNavigate();
 
   const {
@@ -14,23 +19,25 @@ export default function CreateDrinkForm({ addNewDrink }) {
     formState: { errors, isDirty },
   } = useForm({
     mode: 'all',
-    defaultValues: {
-      strDrink: '',
-      strAlcoholic: 'alcoholic',
-      strCategory: 'Cocktail',
-      strGlass: 'Cocktail glass',
-      strInstructions: '',
-      strIngredient1: '',
-      strIngredient2: '',
-      strIngredient3: '',
-      strIngredient4: '',
-      strIngredient5: '',
-      strMeasure1: '',
-      strMeasure2: '',
-      strMeasure3: '',
-      strMeasure4: '',
-      strMeasure5: '',
-    },
+    defaultValues: preloadedValues
+      ? preloadedValues
+      : {
+          strDrink: '',
+          strAlcoholic: 'alcoholic',
+          strCategory: 'Cocktail',
+          strGlass: 'Cocktail glass',
+          strInstructions: '',
+          strIngredient1: '',
+          strIngredient2: '',
+          strIngredient3: '',
+          strIngredient4: '',
+          strIngredient5: '',
+          strMeasure1: '',
+          strMeasure2: '',
+          strMeasure3: '',
+          strMeasure4: '',
+          strMeasure5: '',
+        },
   });
 
   const onSubmit = data => {
@@ -53,7 +60,7 @@ export default function CreateDrinkForm({ addNewDrink }) {
       strMeasure4: data.strMeasure4,
       strMeasure5: data.strMeasure5,
     };
-    addNewDrink(newDrink);
+    handleNewDrink(newDrink);
     reset();
     navigate(-1);
   };
@@ -65,7 +72,7 @@ export default function CreateDrinkForm({ addNewDrink }) {
         <span className="sr-only">Go back arrow</span>
       </GoBackArrow>
       <StyledForm onSubmit={handleSubmit(onSubmit)}>
-        <FormHeadline>Create your own drink!</FormHeadline>
+        <FormHeadline>{title}</FormHeadline>
         <label htmlFor="strDrink">
           What is the name of your drink?
           <FormInput
@@ -361,7 +368,7 @@ export default function CreateDrinkForm({ addNewDrink }) {
 
         <ErrorMessage>{errors.strInstructions?.message}</ErrorMessage>
         <FormButton disabled={!isDirty} type="submit">
-          Create Drink
+          {buttonText}
         </FormButton>
       </StyledForm>
     </FormContainer>

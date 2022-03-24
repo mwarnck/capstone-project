@@ -17,7 +17,7 @@ export default function MyDrinksPage({
       <Header>My Drinks</Header>
       <DrinklistContainer>
         <MyDrinksHeadline>Create Drinks -&gt;</MyDrinksHeadline>
-        <AddDrinkButton onClick={() => navigate('/createDrinkForm')}>
+        <AddDrinkButton onClick={() => navigate('/createDrinkPage')}>
           <img
             src={addNewDrinkIcon}
             width="50"

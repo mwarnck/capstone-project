@@ -8,7 +8,7 @@ import MyDrinksPage from './pages/MyDrinksPage.js';
 import RandomDrinkPage from './pages/RandomDrinkPage.js';
 import DrinkPage from './components/DrinkPage.js';
 import LoadingScreen from './components/LoadingScreen.js';
-import CreateDrinkForm from './components/CreateDrinkForm.js';
+import CreateDrinkPage from './pages/CreateDrinkPage.js';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -73,8 +73,8 @@ function App() {
               }
             />
             <Route
-              path="/createDrinkForm"
-              element={<CreateDrinkForm addNewDrink={addNewDrink} />}
+              path="/createDrinkPage"
+              element={<CreateDrinkPage handleNewDrink={addNewDrink} />}
             />
             <Route path="/randomDrink" element={<RandomDrinkPage />} />
             {fetchedDrinks.map(drink => (
