@@ -7,6 +7,8 @@ import Navigation from '../components/Navigation.js';
 export default function BookmarksPage({
   drinks,
   toggleBookmark,
+  deleteOwnDrink,
+  redirectToEditPage,
   currentFilterBookmarks,
   handleChangeFilterBookmarks,
 }) {
@@ -31,6 +33,8 @@ export default function BookmarksPage({
                 key={drink.idDrink}
                 drink={drink}
                 toggleBookmark={toggleBookmark}
+                deleteOwnDrink={deleteOwnDrink}
+                redirectToEditPage={redirectToEditPage}
               />
             ))}
         {drinks.filter(drink => drink.isBookmarked === true).length < 1 && (

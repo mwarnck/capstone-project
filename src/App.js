@@ -52,6 +52,8 @@ function App() {
                   handleChangeFilter={handleChangeFilter}
                   currentFilter={currentFilter}
                   toggleBookmark={toggleBookmark}
+                  deleteOwnDrink={deleteOwnDrink}
+                  redirectToEditPage={redirectToEditPage}
                 />
               }
             />
@@ -63,6 +65,8 @@ function App() {
                   handleChangeFilterBookmarks={handleChangeFilterBookmarks}
                   currentFilterBookmarks={currentFilterBookmarks}
                   toggleBookmark={toggleBookmark}
+                  deleteOwnDrink={deleteOwnDrink}
+                  redirectToEditPage={redirectToEditPage}
                 />
               }
             />
