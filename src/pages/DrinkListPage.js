@@ -8,6 +8,8 @@ import Navigation from '../components/Navigation.js';
 export default function DrinkListPage({
   drinks,
   toggleBookmark,
+  deleteOwnDrink,
+  redirectToEditPage,
   searchValue,
   handleChangeSearch,
   handleChangeFilter,
@@ -40,6 +42,8 @@ export default function DrinkListPage({
                 key={drink.idDrink}
                 drink={drink}
                 toggleBookmark={toggleBookmark}
+                deleteOwnDrink={deleteOwnDrink}
+                redirectToEditPage={redirectToEditPage}
               />
             ))}
         {drinks &&

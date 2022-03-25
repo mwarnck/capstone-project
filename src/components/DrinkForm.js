@@ -4,7 +4,12 @@ import { nanoid } from 'nanoid';
 import { useNavigate } from 'react-router-dom';
 import goBackArrow from '../icons/goBackArrow.svg';
 
-export default function CreateDrinkForm({ addNewDrink }) {
+export default function CreateDrinkForm({
+  handleNewDrink,
+  title,
+  buttonText,
+  preloadedValues,
+}) {
   const navigate = useNavigate();
 
   const {
@@ -14,35 +19,68 @@ export default function CreateDrinkForm({ addNewDrink }) {
     formState: { errors, isDirty },
   } = useForm({
     mode: 'all',
-    defaultValues: {
-      drinkName: '',
-      alcoholic: 'alcoholic',
-      category: 'Cocktail',
-      glass: 'Cocktail glass',
-    },
+    defaultValues: preloadedValues
+      ? preloadedValues
+      : {
+          strDrink: '',
+          strAlcoholic: 'alcoholic',
+          strCategory: 'Cocktail',
+          strGlass: 'Cocktail glass',
+          strInstructions: '',
+          strIngredient1: '',
+          strIngredient2: '',
+          strIngredient3: '',
+          strIngredient4: '',
+          strIngredient5: '',
+          strMeasure1: '',
+          strMeasure2: '',
+          strMeasure3: '',
+          strMeasure4: '',
+          strMeasure5: '',
+        },
   });
 
   const onSubmit = data => {
-    const newDrink = {
-      idDrink: nanoid(),
-      isMyDrink: true,
-      strDrink: data.drinkName,
-      strCategory: data.category,
-      strAlcoholic: data.alcoholic,
-      strGlass: data.glass,
-      strInstructions: data.instructions,
-      strIngredient1: data.ingredient1,
-      strIngredient2: data.ingredient2,
-      strIngredient3: data.ingredient3,
-      strIngredient4: data.ingredient4,
-      strIngredient5: data.ingredient5,
-      strMeasure1: data.measure1,
-      strMeasure2: data.measure2,
-      strMeasure3: data.measure3,
-      strMeasure4: data.measure4,
-      strMeasure5: data.measure5,
-    };
-    addNewDrink(newDrink);
+    if (preloadedValues) {
+      handleNewDrink({
+        idDrink: preloadedValues.idDrink,
+        strDrink: data.strDrink,
+        strCategory: data.strCategory,
+        strAlcoholic: data.strAlcoholic,
+        strGlass: data.strGlass,
+        strInstructions: data.strInstructions,
+        strIngredient1: data.strIngredient1,
+        strIngredient2: data.strIngredient2,
+        strIngredient3: data.strIngredient3,
+        strIngredient4: data.strIngredient4,
+        strIngredient5: data.strIngredient5,
+        strMeasure1: data.strMeasure1,
+        strMeasure2: data.strMeasure2,
+        strMeasure3: data.strMeasure3,
+        strMeasure4: data.strMeasure4,
+        strMeasure5: data.strMeasure5,
+      });
+    } else {
+      handleNewDrink({
+        idDrink: nanoid(),
+        isMyDrink: true,
+        strDrink: data.strDrink,
+        strCategory: data.strCategory,
+        strAlcoholic: data.strAlcoholic,
+        strGlass: data.strGlass,
+        strInstructions: data.strInstructions,
+        strIngredient1: data.strIngredient1,
+        strIngredient2: data.strIngredient2,
+        strIngredient3: data.strIngredient3,
+        strIngredient4: data.strIngredient4,
+        strIngredient5: data.strIngredient5,
+        strMeasure1: data.strMeasure1,
+        strMeasure2: data.strMeasure2,
+        strMeasure3: data.strMeasure3,
+        strMeasure4: data.strMeasure4,
+        strMeasure5: data.strMeasure5,
+      });
+    }
     reset();
     navigate(-1);
   };
@@ -54,16 +92,16 @@ export default function CreateDrinkForm({ addNewDrink }) {
         <span className="sr-only">Go back arrow</span>
       </GoBackArrow>
       <StyledForm onSubmit={handleSubmit(onSubmit)}>
-        <FormHeadline>Create your own drink!</FormHeadline>
-        <label htmlFor="drinkName">
+        <FormHeadline>{title}</FormHeadline>
+        <label htmlFor="strDrink">
           What is the name of your drink?
           <FormInput
             type="text"
-            id="drinkName"
+            id="strDrink"
             placeholder="name"
             maxLength={31}
             autoFocus
-            {...register('drinkName', {
+            {...register('strDrink', {
               required: {
                 value: true,
                 message: 'Your drink needs a name',
@@ -78,20 +116,20 @@ export default function CreateDrinkForm({ addNewDrink }) {
               },
             })}
           />
-          <ErrorMessage>{errors.drinkName?.message}</ErrorMessage>
+          <ErrorMessage>{errors.strDrink?.message}</ErrorMessage>
         </label>
 
-        <label htmlFor="alcoholic">
+        <label htmlFor="strAlcoholic">
           Alcoholic or non-alcoholic? <br />
-          <FormSelect id="alcoholic" {...register('alcoholic')}>
+          <FormSelect id="strAlcoholic" {...register('strAlcoholic')}>
             <option value="alcoholic">Alcoholic</option>
             <option value="non alcoholic">Non-Alcoholic</option>
           </FormSelect>
         </label>
 
-        <label htmlFor="category">
+        <label htmlFor="strCategory">
           Category? <br />
-          <FormSelect id="category" {...register('category')}>
+          <FormSelect id="strCategory" {...register('strCategory')}>
             <option value="Cocktail">Cocktail</option>
             <option value="Ordinary Drink">Ordinary Drink</option>
             <option value="Shot">Shot</option>
@@ -102,9 +140,9 @@ export default function CreateDrinkForm({ addNewDrink }) {
           </FormSelect>
         </label>
 
-        <label htmlFor="glass">
+        <label htmlFor="strGlass">
           Glass? <br />
-          <FormSelect id="glass" {...register('glass')}>
+          <FormSelect id="strGlass" {...register('strGlass')}>
             <option value="Cocktail glass">Cocktail Glass</option>
             <option value="Highball glass">Highball Glass</option>
             <option value="Old-fashioned glass">Old-fashioned Glass</option>
@@ -115,14 +153,14 @@ export default function CreateDrinkForm({ addNewDrink }) {
         </label>
 
         <IngredientsGrid>
-          <label htmlFor="ingredient1">
+          <label htmlFor="strIngredient1">
             Ingredient 1:
             <FormInput
               type="text"
-              id="ingredient1"
+              id="strIngredient1"
               placeholder="e.g. Orange juice"
               maxLength={31}
-              {...register('ingredient1', {
+              {...register('strIngredient1', {
                 required: {
                   value: true,
                   message: 'You need at least one ingredient',
@@ -137,16 +175,16 @@ export default function CreateDrinkForm({ addNewDrink }) {
                 },
               })}
             />
-            <ErrorMessage>{errors.ingredient1?.message}</ErrorMessage>
+            <ErrorMessage>{errors.strIngredient1?.message}</ErrorMessage>
           </label>
-          <label htmlFor="measure1">
+          <label htmlFor="strMeasure1">
             Measure 1:
             <FormInput
               type="text"
-              id="measure1"
+              id="strMeasure1"
               placeholder="e.g. 3 oz"
               maxLength={11}
-              {...register('measure1', {
+              {...register('strMeasure1', {
                 required: {
                   value: true,
                   message: 'How much?',
@@ -161,16 +199,16 @@ export default function CreateDrinkForm({ addNewDrink }) {
                 },
               })}
             />
-            <ErrorMessage>{errors.measure1?.message}</ErrorMessage>
+            <ErrorMessage>{errors.strMeasure1?.message}</ErrorMessage>
           </label>
-          <label htmlFor="ingredient2">
+          <label htmlFor="strIngredient2">
             Ingredient 2:
             <FormInput
               type="text"
-              id="ingredient2"
+              id="strIngredient2"
               placeholder="e.g. Orange juice"
               maxLength={31}
-              {...register('ingredient2', {
+              {...register('strIngredient2', {
                 minLength: {
                   value: 2,
                   message: 'This is too short',
@@ -181,16 +219,16 @@ export default function CreateDrinkForm({ addNewDrink }) {
                 },
               })}
             />
-            <ErrorMessage>{errors.ingredient2?.message}</ErrorMessage>
+            <ErrorMessage>{errors.strIngredient2?.message}</ErrorMessage>
           </label>
-          <label htmlFor="measure2">
+          <label htmlFor="strMeasure2">
             Measure 2:
             <FormInput
               type="text"
-              id="measure2"
+              id="strMeasure2"
               placeholder="e.g. 3 oz"
               maxLength={11}
-              {...register('measure2', {
+              {...register('strMeasure2', {
                 minLength: {
                   value: 2,
                   message: 'This is too short',
@@ -201,16 +239,16 @@ export default function CreateDrinkForm({ addNewDrink }) {
                 },
               })}
             />
-            <ErrorMessage>{errors.measure2?.message}</ErrorMessage>
+            <ErrorMessage>{errors.strMeasure2?.message}</ErrorMessage>
           </label>
-          <label htmlFor="ingredient3">
+          <label htmlFor="strIngredient3">
             Ingredient 3:
             <FormInput
               type="text"
-              id="ingredient3"
+              id="strIngredient3"
               placeholder="e.g. Orange juice"
               maxLength={31}
-              {...register('ingredient3', {
+              {...register('strIngredient3', {
                 minLength: {
                   value: 2,
                   message: 'This is too short',
@@ -221,16 +259,16 @@ export default function CreateDrinkForm({ addNewDrink }) {
                 },
               })}
             />
-            <ErrorMessage>{errors.ingredient3?.message}</ErrorMessage>
+            <ErrorMessage>{errors.strIngredient3?.message}</ErrorMessage>
           </label>
-          <label htmlFor="measure3">
+          <label htmlFor="strMeasure3">
             Measure 3:
             <FormInput
               type="text"
-              id="measure3"
+              id="strMeasure3"
               placeholder="e.g. 3 oz"
               maxLength={11}
-              {...register('measure3', {
+              {...register('strMeasure3', {
                 minLength: {
                   value: 2,
                   message: 'This is too short',
@@ -241,16 +279,16 @@ export default function CreateDrinkForm({ addNewDrink }) {
                 },
               })}
             />
-            <ErrorMessage>{errors.measure3?.message}</ErrorMessage>
+            <ErrorMessage>{errors.strMeasure3?.message}</ErrorMessage>
           </label>
-          <label htmlFor="ingredient4">
+          <label htmlFor="strIngredient4">
             Ingredient 4:
             <FormInput
               type="text"
-              id="ingredient4"
+              id="strIngredient4"
               maxLength={31}
               placeholder="e.g. Orange juice"
-              {...register('ingredient4', {
+              {...register('strIngredient4', {
                 minLength: {
                   value: 2,
                   message: 'This is too short',
@@ -261,16 +299,16 @@ export default function CreateDrinkForm({ addNewDrink }) {
                 },
               })}
             />
-            <ErrorMessage>{errors.ingredient4?.message}</ErrorMessage>
+            <ErrorMessage>{errors.strIngredient4?.message}</ErrorMessage>
           </label>
-          <label htmlFor="measure4">
+          <label htmlFor="strMeasure4">
             Measure 4:
             <FormInput
               type="text"
-              id="measure4"
+              id="strMeasure4"
               placeholder="e.g. 3 oz"
               maxLength={11}
-              {...register('measure4', {
+              {...register('strMeasure4', {
                 minLength: {
                   value: 2,
                   message: 'This is too short',
@@ -281,16 +319,16 @@ export default function CreateDrinkForm({ addNewDrink }) {
                 },
               })}
             />
-            <ErrorMessage>{errors.measure4?.message}</ErrorMessage>
+            <ErrorMessage>{errors.strMeasure4?.message}</ErrorMessage>
           </label>
-          <label htmlFor="ingredient5">
+          <label htmlFor="strIngredient5">
             Ingredient 5:
             <FormInput
               type="text"
-              id="ingredient5"
+              id="strIngredient5"
               placeholder="e.g. Orange juice"
               maxLength={31}
-              {...register('ingredient5', {
+              {...register('strIngredient5', {
                 minLength: {
                   value: 2,
                   message: 'This is too short',
@@ -301,16 +339,16 @@ export default function CreateDrinkForm({ addNewDrink }) {
                 },
               })}
             />
-            <ErrorMessage>{errors.ingredient5?.message}</ErrorMessage>
+            <ErrorMessage>{errors.strIngredient5?.message}</ErrorMessage>
           </label>
-          <label htmlFor="measure5">
+          <label htmlFor="strMeasure5">
             Measure 5:
             <FormInput
               type="text"
-              id="measure5"
+              id="strMeasure5"
               placeholder="e.g. 3 oz"
               maxLength={11}
-              {...register('measure5', {
+              {...register('strMeasure5', {
                 minLength: {
                   value: 2,
                   message: 'This is too short',
@@ -321,17 +359,17 @@ export default function CreateDrinkForm({ addNewDrink }) {
                 },
               })}
             />
-            <span>{errors.measure5?.message}</span>
+            <span>{errors.strMeasure5?.message}</span>
           </label>
         </IngredientsGrid>
-        <label htmlFor="instructions">
+        <label htmlFor="strInstructions">
           Instructions: <br />
           <textarea
-            id="instructions"
+            id="strInstructions"
             placeholder="Add some instructions for preparing your drink..."
             rows="5"
             maxLength={301}
-            {...register('instructions', {
+            {...register('strInstructions', {
               required: {
                 value: true,
                 message: 'Please add some instructions.',
@@ -348,9 +386,9 @@ export default function CreateDrinkForm({ addNewDrink }) {
           />
         </label>
 
-        <ErrorMessage>{errors.instructions?.message}</ErrorMessage>
+        <ErrorMessage>{errors.strInstructions?.message}</ErrorMessage>
         <FormButton disabled={!isDirty} type="submit">
-          Create Drink
+          {buttonText}
         </FormButton>
       </StyledForm>
     </FormContainer>
