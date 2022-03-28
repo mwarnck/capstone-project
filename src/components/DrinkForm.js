@@ -437,7 +437,7 @@ export default function CreateDrinkForm({
         },
       })
       .then(response => {
-        setImage(response.data.url);
+        setImage(response.data.url.replace('http', 'https'));
       })
       .catch(err => console.error(err));
   }
