@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Header from '../components/Header.js';
 import DrinkCard from '../components/DrinkCard.js';
 import addNewDrinkIcon from '../icons/addNewDrinkIcon.svg';
+import ScrollToTop from '../components/ScrollToTop.js';
 import Navigation from '../components/Navigation.js';
 import { useNavigate } from 'react-router-dom';
 
@@ -47,6 +48,7 @@ export default function MyDrinksPage({
           </EmptyState>
         )}
       </DrinklistContainer>
+      <ScrollToTop />
       <Navigation />
     </PageContainer>
   );
