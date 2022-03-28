@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Header from '../components/Header.js';
 import DrinkCard from '../components/DrinkCard.js';
 import FilterDrinks from '../components/FilterDrinks.js';
+import ScrollToTop from '../components/ScrollToTop.js';
 import Navigation from '../components/Navigation.js';
 
 export default function BookmarksPage({
@@ -44,6 +45,7 @@ export default function BookmarksPage({
           </EmptyState>
         )}
       </DrinklistContainer>
+      <ScrollToTop />
       <Navigation />
     </PageContainer>
   );
