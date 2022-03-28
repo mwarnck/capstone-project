@@ -2,7 +2,10 @@ import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
 import { nanoid } from 'nanoid';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import axios from 'axios';
 import goBackArrow from '../icons/goBackArrow.svg';
+import uploadPhotoIcon from '../icons/uploadPhotoIcon.svg';
 
 export default function CreateDrinkForm({
   handleNewDrink,
@@ -11,6 +14,9 @@ export default function CreateDrinkForm({
   preloadedValues,
 }) {
   const navigate = useNavigate();
+  const CLOUDNAME = process.env.REACT_APP_CLOUDINARY_CLOUDNAME;
+  const PRESET = process.env.REACT_APP_CLOUDINARY_PRESET;
+  const [image, setImage] = useState(preloadedValues?.strDrinkThumb ?? '');
 
   const {
     register,
@@ -37,6 +43,7 @@ export default function CreateDrinkForm({
           strMeasure3: '',
           strMeasure4: '',
           strMeasure5: '',
+          strDrinkThumb: '',
         },
   });
 
@@ -59,6 +66,7 @@ export default function CreateDrinkForm({
         strMeasure3: data.strMeasure3,
         strMeasure4: data.strMeasure4,
         strMeasure5: data.strMeasure5,
+        strDrinkThumb: image,
       });
     } else {
       handleNewDrink({
@@ -79,6 +87,7 @@ export default function CreateDrinkForm({
         strMeasure3: data.strMeasure3,
         strMeasure4: data.strMeasure4,
         strMeasure5: data.strMeasure5,
+        strDrinkThumb: image,
       });
     }
     reset();
@@ -385,14 +394,53 @@ export default function CreateDrinkForm({
             })}
           />
         </label>
-
         <ErrorMessage>{errors.strInstructions?.message}</ErrorMessage>
+        <ImageUploadLabel htmlFor="imageUpload">
+          <img src={uploadPhotoIcon} width="40" height="40" alt="upload icon" />
+          <input
+            id="imageUpload"
+            name="imageUpload"
+            type="file"
+            onChange={upload}
+            hidden
+          />
+          {image ? (
+            <img
+              src={image}
+              width="50"
+              height="50"
+              alt="preview of uploaded drink"
+            />
+          ) : (
+            ''
+          )}
+        </ImageUploadLabel>
+
         <FormButton disabled={!isDirty} type="submit">
           {buttonText}
         </FormButton>
       </StyledForm>
     </FormContainer>
   );
+
+  function upload(event) {
+    const url = `https://api.cloudinary.com/v1_1/${CLOUDNAME}/upload`;
+
+    const formData = new FormData();
+    formData.append('file', event.target.files[0]);
+    formData.append('upload_preset', PRESET);
+
+    axios
+      .post(url, formData, {
+        headers: {
+          'Content-type': 'multipart/form-data',
+        },
+      })
+      .then(response => {
+        setImage(response.data.url);
+      })
+      .catch(err => console.error(err));
+  }
 }
 
 const FormContainer = styled.div`
@@ -503,5 +551,16 @@ const FormButton = styled.button`
   &:hover {
     outline: none;
     border-color: var(--font-color-headlines-bright);
+  }
+`;
+
+const ImageUploadLabel = styled.label`
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  img {
+    background-color: transparent;
+    border-radius: 50%;
   }
 `;
