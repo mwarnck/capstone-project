@@ -190,6 +190,7 @@ function App() {
 
   function addNewDrink(newDrink) {
     setFetchedDrinks([...fetchedDrinks, newDrink]);
+    //console.log(newDrink);
   }
 
   function editDrink(newDrink) {
@@ -213,6 +214,7 @@ function App() {
             strMeasure3: newDrink.strMeasure3,
             strMeasure4: newDrink.strMeasure4,
             strMeasure5: newDrink.strMeasure5,
+            strDrinkThumb: newDrink.strDrinkThumb,
           };
         } else {
           return drink;
