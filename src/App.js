@@ -96,7 +96,10 @@ function App() {
               }
             />
             <Route path="/randomDrink" element={<RandomDrinkPage />} />
-            <Route path="/shoppingList" element={<ShoppingListPage />} />
+            <Route
+              path="/shoppingList"
+              element={<ShoppingListPage drinks={fetchedDrinks} />}
+            />
             {fetchedDrinks.map(drink => (
               <Route
                 key={drink.idDrink}
