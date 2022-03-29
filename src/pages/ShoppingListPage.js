@@ -10,13 +10,6 @@ export default function ShoppingListPage({ drinks }) {
   const [selectedDrinks, setSelectedDrinks] = useState([]);
   const [ingredients, setIngredients] = useState([]);
 
-  //console.log(suggestions);
-  //console.log(value);
-  //console.log(selectedDrinks);
-
-  const escapeRegexCharacters = str =>
-    str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-
   return (
     <PageContainer>
       <Header>Shopping List</Header>
@@ -49,6 +42,10 @@ export default function ShoppingListPage({ drinks }) {
       <Navigation />
     </PageContainer>
   );
+
+  function escapeRegexCharacters(str) {
+    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
 
   function getSuggestions(value) {
     const escapedValue = escapeRegexCharacters(value.trim());
