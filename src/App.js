@@ -11,6 +11,7 @@ import DrinkPage from './components/DrinkPage.js';
 import LoadingScreen from './components/LoadingScreen.js';
 import CreateDrinkPage from './pages/CreateDrinkPage.js';
 import EditDrinkPage from './pages/EditDrinkPage.js';
+import ShoppingListPage from './pages/ShoppingListPage.js';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -95,6 +96,7 @@ function App() {
               }
             />
             <Route path="/randomDrink" element={<RandomDrinkPage />} />
+            <Route path="/shoppingList" element={<ShoppingListPage />} />
             {fetchedDrinks.map(drink => (
               <Route
                 key={drink.idDrink}
