@@ -109,7 +109,8 @@ export default function ShoppingListPage({ drinks }) {
     const ingredientsArray = filteredObjects.map(obj => Object.values(obj));
     const listOfIngredients = ingredientsArray
       .flat()
-      .filter(element => element !== null);
+      .filter(element => element !== null)
+      .filter(element => element !== '');
     const filteredIngredients = [...new Set(listOfIngredients)];
     setIngredients(filteredIngredients);
   }
