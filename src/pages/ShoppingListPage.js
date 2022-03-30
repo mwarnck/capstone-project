@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import './theme.css';
+import './autosuggest.css';
 import Autosuggest from 'react-autosuggest/dist/Autosuggest';
 import Header from '../components/Header.js';
 import Navigation from '../components/Navigation.js';
@@ -15,6 +15,7 @@ export default function ShoppingListPage({ drinks }) {
     <PageContainer>
       <Header>Shopping List</Header>
       <ShoppingListContainer>
+        <SubHeading>Select drinks to create a shopping list:</SubHeading>
         <Autosuggest
           suggestions={suggestions}
           onSuggestionsClearRequested={() => setSuggestions([])}
@@ -45,7 +46,9 @@ export default function ShoppingListPage({ drinks }) {
             </ShoppingItem>
           ))}
         </ShoppingItemList>
-        <button onClick={getIngredients}>Generate list of ingredients</button>
+        <ShoppingListButton onClick={getIngredients}>
+          Generate list of ingredients
+        </ShoppingListButton>
         <SubHeading>Ingredients to buy:</SubHeading>
         <ShoppingItemList role="list">
           {ingredients &&
@@ -162,4 +165,21 @@ const ShoppingItem = styled.li`
 const SubHeading = styled.h3`
   font-weight: bold;
   color: var(--font-color-headlines-bright);
+`;
+
+const ShoppingListButton = styled.button`
+  height: 35px;
+  font-size: 1.1rem;
+  font-family: sans-serif;
+  color: var(--font-color-headlines-bright);
+  background-color: var(--bg-color-button);
+  border-radius: 5px;
+  border: 2px solid var(--bg-color-button);
+  margin: 10px 0;
+
+  &:focus,
+  &:hover {
+    outline: none;
+    border-color: var(--font-color-headlines-bright);
+  }
 `;
