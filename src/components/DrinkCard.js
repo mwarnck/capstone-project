@@ -58,8 +58,9 @@ export default function DrinkCard({
         <Wrapper>
           <DrinkImage
             src={
-              drink.strDrinkThumb ??
-              'https://source.unsplash.com/random/100×100/?cocktail'
+              drink.strDrinkThumb === ''
+                ? 'https://source.unsplash.com/random/100×100/?cocktail'
+                : drink.strDrinkThumb
             }
             alt={drink.strDrink}
             width={100}
