@@ -69,20 +69,16 @@ export default function ShoppingListPage({ drinks }) {
     </PageContainer>
   );
 
-  function escapeRegexCharacters(str) {
-    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  }
-
   function getSuggestions(value) {
-    const escapedValue = escapeRegexCharacters(value.trim());
-
-    if (escapedValue === '') {
+    if (value === '') {
       return [];
     }
 
-    const regex = new RegExp('^' + escapedValue, 'i');
-
-    return drinks.filter(drink => regex.test(drink.strDrink)).slice(0, 5);
+    return drinks
+      .filter(drink =>
+        drink.strDrink.toLowerCase().trim().includes(value.toLowerCase().trim())
+      )
+      .slice(0, 5);
   }
 
   function getSuggestionValue(suggestion) {
