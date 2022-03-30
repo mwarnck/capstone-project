@@ -53,8 +53,9 @@ export default function DrinkPage({
       </ShortFactsList>
       <DrinkImage
         src={
-          drink.strDrinkThumb ??
-          'https://source.unsplash.com/random/250×250/?cocktail'
+          drink.strDrinkThumb === ''
+            ? 'https://source.unsplash.com/random/100×100/?cocktail'
+            : drink.strDrinkThumb
         }
         alt={drink.strDrink}
         width={250}
