@@ -195,7 +195,6 @@ function App() {
 
   function addNewDrink(newDrink) {
     setFetchedDrinks([...fetchedDrinks, newDrink]);
-    //console.log(newDrink);
   }
 
   function editDrink(newDrink) {
