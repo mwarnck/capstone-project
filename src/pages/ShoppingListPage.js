@@ -106,8 +106,8 @@ export default function ShoppingListPage({ drinks }) {
         Object.entries(object).filter(([key]) => key.includes('Ingredient'))
       )
     );
-    const ingredientsArray = filteredObjects.map(obj => Object.values(obj));
-    const listOfIngredients = ingredientsArray
+    const ingredientsArrays = filteredObjects.map(obj => Object.values(obj));
+    const listOfIngredients = ingredientsArrays
       .flat()
       .filter(element => element !== null)
       .filter(element => element !== '');
