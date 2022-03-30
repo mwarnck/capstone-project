@@ -140,6 +140,7 @@ const DrinkButton = styled.button`
   border: none;
   padding: 5px;
   width: 100%;
+  height: 100%;
 `;
 
 const ShoppingItem = styled.li`
