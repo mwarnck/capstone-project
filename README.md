@@ -2,6 +2,8 @@
 
 ## Capstone Project from Web Development Bootcamp at [neuefische](https://www.neuefische.de/weiterbildung/web-development)
 
+<img align="right" src="./src/images/cocktail_night.gif" alt="preview cocktail night" width="250px" />
+
 Cocktail Night delivers inspiration for the next cocktail event with friends or family. The user gets the ingredients and instructions for preparing for 400+ cocktails and other drinks. Next to this there are a few other features like create own recipes or generate a shopping list of ingredients.
 
 ## `Features`
